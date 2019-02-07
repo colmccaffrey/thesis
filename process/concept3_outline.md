@@ -44,6 +44,26 @@
 
 	- data privacy considerations
 
+## Alternative Case Study: Noise Pollution and it's effects on well being
+
+### noise pollution data: tbd
+
+- 311 noise complaints
+
+	- identify aggregate sets
+	- identify worst neghborhoods
+
+- other- nyc open data?
+
+### measured effects of noise pollution on health
+
+- world health and wellbing report
+
+	- indicators for health and well being
+	- cross reference with negative effects of noise pollution
+
+### solutions?
+
 ## Case study: Visualizing city pollution levels and air quality w/AR
 
 ### common health issues
