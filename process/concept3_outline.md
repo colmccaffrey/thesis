@@ -44,7 +44,7 @@
 
 	- data privacy considerations
 
-## Case study: Visualizing city pollution levels and air quality
+## Case study: Visualizing city pollution levels and air quality w/AR
 
 ### common health issues
 
@@ -67,8 +67,10 @@
 - construction
 - factory
 - industry
+- weather
+- nature/allergy
 
-### possible solutions/ways to reduce impact on health (and visualize impact)
+### possible solutions/ways to reduce impact on health (visualize impact)
 
 - already enacted
 - upcoming
