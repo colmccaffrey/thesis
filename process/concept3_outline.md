@@ -18,6 +18,10 @@
 
 	- a/b testing
 
+### humanizing the experience
+
+- will an alternative presentation engage a new audience to topic?
+
 ## differences between AR and VR
 
 ### data visualization process/options
@@ -52,6 +56,9 @@
 
 	- identify aggregate sets
 	- identify worst neghborhoods
+	- show trends over time
+
+		- are conditions improving or degrading over time?
 
 - other- nyc open data?
 
