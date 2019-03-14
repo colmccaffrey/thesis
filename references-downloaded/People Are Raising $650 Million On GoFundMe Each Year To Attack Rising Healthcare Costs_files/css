@@ -1,6 +1,0 @@
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/l/font?kit=JTURjIg1_i6t8kCHKm45_dJE7gvJ-d51lgiEgUEOekkV4fn8ff-M_8QBPF36mvzSYJt7qI2tTzVtvbEKRA&skey=11a939c399e8c9fe&v=v12) format('woff2');
-}
