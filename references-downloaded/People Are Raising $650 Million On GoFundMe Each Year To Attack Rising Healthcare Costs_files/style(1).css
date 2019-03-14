@@ -1,0 +1,102 @@
+html,
+body {
+    margin: 0;
+}
+body {
+    font-family: Roboto, Helvetica, Arial, sans;
+    margin: 0px;
+    padding: 0px;
+    background: white;
+    color: #4c4c4c;
+}
+body,
+body * {
+    box-sizing: border-box;
+    backface-visibility: hidden;
+    outline: 1px solid transparent;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0) scale(1.0, 1.0);
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#ctnr {
+    width: 300px;
+    height: 600px;
+    position: relative;
+    border: 1px solid #000;
+    background: #273741;
+    overflow: hidden;
+}
+img {
+    display: block;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+#bkgd {
+    width: 300px;
+    height: 600px;
+	top: 0px;
+	left: 0px;
+    position: absolute;
+    overflow: hidden;
+}
+.cta {
+    width: 138px;
+    height: 31px;
+    left: 81px;
+    bottom: 40px;
+    position: absolute;
+    opacity: 0;
+}
+#ctaB {
+    width: 138px;
+    height: 2px;
+    left: 0px;
+    bottom: 0px;
+	background-color: #f26449;
+    opacity: 1;
+    transition: height 1s 0s;
+    -webkit-transition: height 1s 0s;
+}
+
+#clickthru {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 50;
+    opacity: 0;
+    cursor: pointer;
+}
+.clickable {
+    z-index: 100;
+    cursor: pointer;
+}
+#fogC {
+    width: 350px;
+    height: 120px;
+    left: -250px;
+    top: 250px;
+	position:absolute;
+
+}
+#feeling {
+    width: 164px;
+    height: 57px;
+    top: 432px;
+    left: 68px;
+	position:absolute;
+    opacity: 0;
+}
+#copy1 {
+    width: 261px;
+    height: 57px;
+    top: 106px;
+    left: 19px;
+	position: absolute;
+    opacity: 0;
+}

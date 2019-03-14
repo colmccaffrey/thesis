@@ -1,0 +1,53 @@
+var div = document.createElement("div");
+div.innerHTML = "<div id='ctr_ZcaGmbEg' style='width: 100%; height: 100%'></div>";
+document.getElementsByTagName('body')[0].appendChild(div);
+
+// load sa code
+var SA = {
+    version: 1.1,
+    container: '#ctr_ZcaGmbEg',
+    embedUrl: "https://smartasset.com",
+    data: {
+        src: document.referrer,
+        key: "lng4cmuiqhe2a31gmdd0ibpkeievzryh",
+        endpoint: "/embed/savingsmmaratesmini"
+    },
+    events: {
+        on_load: function() {
+            // Include in requestAnimationFrame to be sure the widget resizes first
+            window.requestAnimationFrame(function(){
+                // call native window resize event
+                if (Event.prototype.initEvent) {
+                    // polly fill for IE
+                    var evt = window.document.createEvent('UIEvents');
+                    evt.initUIEvent('resize', true, false, window, 0);
+                    window.dispatchEvent(evt);
+                }
+                else {
+                    window.dispatchEvent(new Event('resize'));
+                }
+            });
+        },
+        on_resize: function() {
+            // Include in requestAnimationFrame to be sure the widget resizes first
+            window.requestAnimationFrame(function(){
+                // call native window resize event
+                if (Event.prototype.initEvent) {
+                    // polly fill for IE
+                    var evt = window.document.createEvent('UIEvents');
+                    evt.initUIEvent('resize', true, false, window, 0);
+                    window.dispatchEvent(evt);
+                }
+                else {
+                    window.dispatchEvent(new Event('resize'));
+                }
+            });
+        }
+    }
+};
+
+var smscript = document.createElement('script');
+smscript.type = 'text/javascript';
+smscript.async = true;
+smscript.src = 'https://smartasset.com/snippet.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(smscript, s);
