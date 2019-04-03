@@ -2,7 +2,9 @@
 //git subtree push --prefix src origin gh-pages
 /* global Vue */
 
+
 var app = new Vue({
+    
     // This is the id of our referenced div-element
     // only this element and everything in it
     // will be connected to the data
@@ -21,7 +23,12 @@ var app = new Vue({
         { name: "drei", val: 3 },
         { name: "vier", val: 4 },
         { name: "fünf", val: 5 }
-      ]
+      ],
+      function () {
+            return {
+                jsonData: null,
+            }
+        }
     },
     methods: {
       myFill(elVal) {
@@ -71,6 +78,7 @@ var app = new Vue({
     },
     //directives is vue mthod that allows us to introduce new elmenets we can bind
     directives: {
+        
       axis(el, binding) { 
         console.log(el); // this is the g
         console.log(binding); // the scale object
@@ -89,6 +97,14 @@ var app = new Vue({
         // d3.axisBottom(scale.x)
         d3.select(el).call(d3[axisMethod](methodArg));
       }
+    },
+    mounted: function () {
+        var jsonData = this;
+        console.log("mounted");
+        d3.json("data/title.json", function (error, data) {
+            if (error) throw error;
+            jsonData = data;
+        })
     }
   })
   
