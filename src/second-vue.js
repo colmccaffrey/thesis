@@ -10,23 +10,24 @@ var app = new Vue({
     // will be connected to the data
   
     //el is defined by vue
-    el: '#bars',
+    el: '#bars2',
     //data is defined by vue
-    data() {
-        return {
-            svgHeight: 300,
-            svgWidth: 155,
-            margin: {top:25, right:25, bottom:25, left:25},
-            chartTitle: 'German Counting! Fun!',
-            data: [
-                { name: "eins", val: 1 },
-                { name: "zwei", val: 2 },
-                { name: "drei", val: 3 },
-                { name: "vier", val: 4 },
-                { name: "fünf", val: 5 }
-            ],
-            titles: [],
-            jsonData: {},
+    data: {
+      svgHeight: 300,
+      svgWidth: 155,
+      margin: {top:25, right:25, bottom:25, left:25},
+      chartTitle: 'German Counting! Fun!',
+      data: [
+        { name: "eins", val: 1 },
+        { name: "zwei", val: 2 },
+        { name: "drei", val: 3 },
+        { name: "vier", val: 4 },
+        { name: "fünf", val: 5 }
+      ],
+      function () {
+            return {
+                jsonData: null,
+            }
         }
     },
     methods: {
@@ -36,10 +37,6 @@ var app = new Vue({
         } else {
           return "#355C7D"
         }
-      },
-     async fetchData() {
-          let data = await d3.json("data/titles.json");
-          this.jsonData = data;
       }
     },
     //makes data available for html as function
@@ -101,9 +98,13 @@ var app = new Vue({
         d3.select(el).call(d3[axisMethod](methodArg));
       }
     },
-    mounted() {
-        console.log("app loaded");
-        this.fetchData();
+    mounted: function () {
+        var jsonData = this;
+        console.log("mounted");
+        d3.json("data/title.json", function (error, data) {
+            if (error) throw error;
+            jsonData = data;
+        })
     }
   })
   
