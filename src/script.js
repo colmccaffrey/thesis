@@ -38,7 +38,7 @@ var app = new Vue({
         }
       },
      async fetchData() {
-          let data = await d3.json("data/titles.json");
+          let data = await d3.json("data/title.json");
           this.jsonData = data;
       }
     },
