@@ -14,7 +14,12 @@
 
 <body>
   <!-- This is our container div, that we will reference in our script-->
-  <div id="bars">
+  <h2><a href="https://xd.adobe.com/view/49826df6-0baf-499b-4b5e-0df23271117a-3fb3/?fullscreen">Design Mockup</a></h2>
+  <h2><a href="https://github.com/colmccaffrey/thesis/tree/master/src/data">Data</a></h2>
+  <h2><a href="https://github.com/colmccaffrey/thesis/tree/master/process">Process</a></h2>
+
+  <!--begin src code 1 of 2-->
+  <!-- <div id="bars">
     {{data[2].name}}
     <div id="center">
       <h3>Data load test: {{jsonData.title}}</h3>
@@ -22,10 +27,15 @@
         <p>Our inpute here.</p>
         <input type="number" placeholder="Edit me" v-model='data[0].val'/>
       </div>
-    <svg :width='svgWidth' :height='svgHeight'>
+    <svg :width='svgWidth' :height='svgHeight'> -->
+      <!--end src code 1 of 2-->
+
+
       <!-- use backticks to include variable declared with $- javascript method when you need variables in string - interpolate lets javascript be executed-->
       <!-- <g :transform="'translate(' + margin.left + ',' + margin.top + ')'"> -->
-      <g :transform="`translate(${margin.left}, ${margin.top})`">
+
+        <!-- begin src code 2 of 2-->
+      <!-- <g :transform="`translate(${margin.left}, ${margin.top})`">
         <rect v-for="(element, index) in data"
           :x="scale.x(element.name)"
           :y="scale.y(element.val)"
@@ -40,8 +50,9 @@
       </g>
     </svg>
     </div>
-  </div>
-  
+  </div> -->
+   <!--end src code 2 of 2-->
+
   <!-- It’s important that your script is at the bottom of your body,
   because we need the DOM to be ready-->
   <script src="script.js"></script>
