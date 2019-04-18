@@ -1,5 +1,6 @@
 html,
-input,
+input, 
+body,
 bars {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 900;
@@ -19,6 +20,10 @@ bars {
 
 #center {
   text-align: center;
+}
+
+#links {
+  padding: 10rem;
 }
 
 div,
