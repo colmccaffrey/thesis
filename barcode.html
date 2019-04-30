@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css?family=Montserrat|Lato" rel="stylesheet">
+	
+
 <style type="text/css">
 /*chart styles*/
   body {
-    font-family: sans-serif;
+    font-family: 'Lato', sans-serif;
     margin: 0;
   }
+  h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+}
 
-  .container {
-      margin: 2rem;
-  }
   .y.axis line {
     fill: none;
     stroke: #990000;
@@ -111,8 +114,8 @@
   div.tooltip {   
       position: absolute;           
       text-align: left;                                       
-      font-family: sans-serif;
-      font-size: 14px;
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
       pointer-events: none;   
       color: #a6a6a6;  
   } 
@@ -121,47 +124,58 @@
     display: none;
   }
 
-  /* #barcode-chart {
-      margin: 5%;
-  } */
-/*   
-  .cities {
-    fill: none;
-    stroke: #aaa;
-    stroke-linejoin: round;
-    stroke-linecap: round;
-    stroke-width: 1.5px;
-  }
-  
-  .city--hover {
-    stroke: #000;
-  }
-  
-  .focus text {
-    text-anchor: middle;
-    text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
-  }
-  
-  .voronoi path {
-    fill: none;
-    pointer-events: all;
-  }
-  
-  .voronoi--show path {
-    stroke: red;
-    stroke-opacity: 0.2;
-  }
-  
-  #form {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-  
-  } */
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.2rem;
+  fill: #b9b9b9;
+}
+p {
+    font-size: 13px;
+    opacity: 0.70;
+}
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+}
+h1 {
+    font-size: 42px;
+    font-weight: 400;
+}
+h2 {
+    font-size: 28px;
+    font-weight: 300;
+}
+h3 {
+    font-size: 18px;
+    font-weight: 300;
+}
+h4 {
+    font-size: 18px;
+    font-weight: 200;
+}
+/* app layout */
+.container {
+	width: 100%;
+    display: block;
+}
+.section {
+    position: relative;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+#barcode-chart {
+  padding: 1rem;
+}
 </style>
 <body>
 <div class="container">
-            <!-- set up microcontent to have unique identifier as well? pass as parameter? -->
+  <div class="section"><h1>one</h1></div>
+  <div class="section">
+    <p>one</p>
+    <p>two</p>
+  </div>           
+   <!-- set up microcontent to have unique identifier as well? pass as parameter? -->
         <div id="barcode-chart">
             <div class="micro-content">
                 <div class="col" id="g41-chart"></div>
@@ -176,18 +190,19 @@
                 <div class="col" id="g12-chart"></div>
             </div>
             <div class="micro-content">
-                    <div class="col" id="g44-chart"></div>
-                    <div class="col" id="g24-chart"></div>
-                    <div class="col" id="g34-chart"></div>
-                    <div class="col" id="g14-chart"></div>
-                </div>  
-            <div class="micro-content">
                 <div class="col" id="g43-chart"></div>
                 <div class="col" id="g23-chart"></div>
                 <div class="col" id="g33-chart"></div>
                 <div class="col" id="g13-chart"></div>
             </div>
+            <div class="micro-content">
+                    <div class="col" id="g44-chart"></div>
+                    <div class="col" id="g24-chart"></div>
+                    <div class="col" id="g34-chart"></div>
+                    <div class="col" id="g14-chart"></div>
+            </div>  
         </div>
+      </div>
     </div>
 </body>
   
@@ -226,14 +241,14 @@ function draw(selector, col, clust, data){
     console.log(" draw i " + clust);
     
     
-
-
   var margin = {top: 0, right: 0, bottom: 30, left: 0};
+
     console.log(selector);
   var constWidth = d3.select(selector).node().clientWidth;
   
   var width = constWidth - margin.left - margin.right,
       height = 175 - margin.top - margin.bottom;
+
   
   //Appends the svg to the chart-container div
   var svg = d3.select(selector).append("svg")
@@ -323,10 +338,11 @@ function draw(selector, col, clust, data){
         div.html("<h3 class='bolded'>Cluster " + d.cluster + ": </h3> " + d[col] + ' ' + col)
         
         //   var offset = top ? div.node().offsetHeight + 1 : -1;
+        var offset = this.y;
 
         div
           .style("left", (d3.event.pageX + 10) + "px")
-          .style("top", (height - this.y ) + "px")    
+          .style("top", (height - this.y) + "px")  
         // .style("top", (height - 80) + "px")    
       })
       .on("mouseout", function(d) {

@@ -1,11 +1,20 @@
-var margin = {left:80, top:40, right:120, bottom:50},
-	width = Math.max( Math.min(window.innerWidth, 1100) - margin.left - margin.right - 20, 400),
-    height = Math.max( Math.min(window.innerHeight - 250, 900) - margin.top - margin.bottom - 20, 400),
-    innerRadius = Math.min(width * 0.33, height * .45),
-    outerRadius = innerRadius * 1.05;
+var margin = {left:122, top:40, right:140, bottom:50},
+	width = Math.max( Math.min(window.innerWidth) - margin.left - margin.right),
+	height = Math.max( Math.min(window.innerHeight- 150) - margin.top - margin.bottom ),
+    // height = Math.max( Math.min(window.innerHeight-250, 900) - margin.top - margin.bottom - 20, 400),
+    innerRadius = Math.min(width * 0.33 , height * .45),
+	outerRadius = innerRadius * 1.05;
+	
+//     innerRadius = Math.min(width * 0.33, height * .45),
+//     outerRadius = innerRadius * 1.05;
+	
+// //Recalculate the width and height now that we know the radius
+// width = outerRadius * 2 + margin.right + margin.left;
+// height = outerRadius * 2 + margin.top + margin.bottom;
+	
 	
 //Recalculate the width and height now that we know the radius
-width = outerRadius * 2 + margin.right + margin.left;
+width = outerRadius + margin.right + margin.left;
 height = outerRadius * 2 + margin.top + margin.bottom;
 	
 //Reset the overall font size
@@ -18,16 +27,16 @@ d3.select("html").style("font-size", newFontSize + "%");
 	
 var pullOutSize = 20 + 30/135 * innerRadius;
 var numFormat = d3.format(",.0f");
-var defaultOpacity = 0.85,
-	fadeOpacity = 0.075;
+var defaultOpacity = 0,
+	fadeOpacity = 0.02;
 						
 var loom = d3.loom()
-    .padAngle(0.05)
-	//.sortSubgroups(sortAlpha)
-	//.heightInner(28)
+    .padAngle(0.01)
+	.sortSubgroups(sortAlpha)
+	// .heightInner(100)
 	.emptyPerc(0.2)
-	.widthInner(30)
-	//.widthInner(function(d) { return 6 * d.length; })
+	.widthInner(20)
+	// .widthInner(function(d) { return 6 * d.length; })
 	.value(function(d) { return d.words; })
 	.inner(function(d) { return d.character; })
 	.outer(function(d) { return d.location; });
@@ -37,23 +46,48 @@ var arc = d3.arc()
     .outerRadius(outerRadius);
 
 var string = d3.string()
-    .radius(innerRadius)
+    .radius(innerRadius/1.0)
 	.pullout(pullOutSize);
+
 
 ////////////////////////////////////////////////////////////
 //////////////////// Character notes ///////////////////////
 ////////////////////////////////////////////////////////////
-	
+
+// //pink to green
+// ['#8e0152','#c51b7d','#de77ae','#f1b6da','#fde0ef','#e6f5d0','#b8e186','#7fbc41','#4d9221','#276419']
+// //brown to torquoise
+// ['#543005','#8c510a','#bf812d','#dfc27d','#f6e8c3','#c7eae5','#80cdc1','#35978f','#01665e','#003c30']
+// //orange to purple
+// ['#7f3b08','#b35806','#e08214','#fdb863','#fee0b6','#d8daeb','#b2abd2','#8073ac','#542788','#2d004b']
+// //pink to green
+// ['#8e0152','#c51b7d','#de77ae','#f1b6da','#fde0ef','#e6f5d0','#b8e186','#7fbc41','#4d9221','#276419']
+// //purple to green
+// ['#40004b','#762a83','#9970ab','#c2a5cf','#e7d4e8','#d9f0d3','#a6dba0','#5aae61','#1b7837','#00441b']
+// //blue to red
+// ['#67001f','#b2182b','#d6604d','#f4a582','#fddbc7','#d1e5f0','#92c5de','#4393c3','#2166ac','#053061']
+
 var characterNotes = [];
-characterNotes["surgery"] = "Speaking almost twice as many words as the second most abundant speaker, Gandalf is taking up a large portion of dialogue in almost every location he's in, but stays rather quiet in Mordor";
-characterNotes["Cluster 2"] = "An unexpected runner up to having spoken the most words, Sam flourishes after the battle at Amon Hen, taking up a considerable portion of the words said in both Mordor and Gondor";
-characterNotes["Cluster 3"] = "Although eventually being crowned in Minas Tirith, Gondor, Aragorn is by far most talkative in that other human region, Rohan, fighting a battle at Helm's Deep and convincing an army of dead";
-characterNotes["Cluster 4"] = "Frodo seems most comfortable speaking in the Shire, (mostly) when still an innocent youth, but he feels the burden of the ring increasingly towards the end and leaves the talking to his best friend Sam";
-characterNotes["Cluster 5"] = "Gimli is a quiet character at practically all locations until he reaches Rohan, where he speaks almost half of all his lines";
-characterNotes["Cluster 6"] = "Like Merry, Pippin is also seen saying something at all locations, but his presence is mostly felt when he sings his song in Minas Tirith, serving the steward of Gondor, Denethor";
-characterNotes["Cluster 7"] = "Merry manages to say an average sentence worth of words at all locations, but is most active during his time with Treebeard in Fangorn forest and bonding with Eowyn in Rohan";
-characterNotes["Cluster 8"] = "Boromir speaks his finest lines during the march up Caradhras in the Misty Mountains and right before the Uruk-hai battle at Amon Hen, Parth Galen, taking up a large portion of the total number of words spoken at those locations";
-characterNotes["Cluster 9"] = "Although a very memorable presence throughout the movies, Legolas speaks even less in 3 movies than Boromir, who is alive in only the first movie";
+characterNotes["Cluster 0"] = "surgery, severe, need, donations, care";
+characterNotes["Cluster 1"] = "cancer, treatments, diagnosis, need, stage";
+characterNotes["Cluster 2"] = "heart, medical, surgery, family, recovery";
+characterNotes["Cluster 3"] = "medical, care, life, cost, continue";
+characterNotes["Cluster 4"] = "work, care, job, days, need";
+characterNotes["Cluster 5"] = "family, expenses, years, cost, medical";
+characterNotes["Cluster 6"] = "cancer, treatments, surgery, work, family";
+characterNotes["Cluster 7"] = "months, recovery, next, work, last";
+characterNotes["Cluster 8"] = "getting, pain, back, go, sees";
+characterNotes["Cluster 9"] = "amount, family, any, care, life";
+characterNotes["Cluster 10"] = "give, life, know, fights, loving";
+characterNotes["Cluster 11"] = "recent, stage, donations, cost, diagnosed";
+characterNotes["Cluster 12"] = "treatments, cancer, family, years, donations";
+characterNotes["Cluster 13"] = "hospital, family, need, time, donations";
+characterNotes["Cluster 14"] = "need, friends, family, know, time";
+characterNotes["Cluster 15"] = "medical, hospital, bill, getting, tests";
+characterNotes["Cluster 16"] = "support, appreciate, family, care, time";
+characterNotes["Cluster 17"] = "surgery, pain, know, need, removed";
+characterNotes["Cluster 18"] = "causing, hopes, medical, pain, continue";
+characterNotes["Cluster 19"] = "treatments, cancer, radiation, chemotherapy, know";
 ////////////////////////////////////////////////////////////
 ////////////////////// Create SVG //////////////////////////
 ////////////////////////////////////////////////////////////
@@ -90,7 +124,7 @@ d3.json('data/loom_cluster_terms.json', function (error, dataAgg) {
 	//Set more loom functions
 	loom
 		.sortSubgroups(sortCharacter)
-		.heightInner(innerRadius/characterOrder.length + 10);
+		.heightInner(innerRadius*.75/characterOrder.length + 10);
 
 		// .heightInner(innerRadius*0.75/characterOrder.length);
 	
@@ -99,15 +133,16 @@ d3.json('data/loom_cluster_terms.json', function (error, dataAgg) {
 	////////////////////////////////////////////////////////////
 					
 	//Color for the unique locations
-	var locations = ["Bree", "Emyn Muil", "Fangorn", "Gondor",  "Isengard", "Lothlorien", "Misty Mountains", "Mordor",  "Moria",   "Parth Galen", "Rivendell", "Rohan",   "The Shire"];
-	var colors = ["#5a3511", "#47635f",   "#223e15", "#C6CAC9", "#0d1e25",  "#53821a",    "#4387AA",         "#770000", "#373F41", "#602317",     "#8D9413",   "#c17924", "#3C7E16"];
+	var locations = ["Cluster 0", "Cluster 1", "Cluster 2", "Cluster 3", "Cluster 4", "Cluster 5", "Cluster 6", "Cluster 7", "Cluster 8", "Cluster 9", "Cluster 10", "Cluster 11", "Cluster 12", "Cluster 13", "Cluster 14", "Cluster 15", "Cluster 16", "Cluster 17", "Cluster 18", "Cluster 19"];
+	// var colors = ['#f7f4f9','#e7e1ef','#d4b9da','#c994c7','#fff7f3','#f768a1','#dd3497','#fde0dd','#fcc5c0','#fa9fb5','#f768a1'];
+	var colors = ['#fcc5c0','#fa9fb5','#f768a1','#dd3497','#ae017e','#7a0177','#e7e1ef','#d4b9da','#c994c7','#df65b0'];
+	//'#e7e1ef','#d4b9da','#c994c7','#df65b0','#e7298a','#ce1256','#980043'
 	var color = d3.scaleOrdinal()
     	.domain(locations)
     	.range(colors);
-	
 	//Create a group that already holds the data
 	var g = svg.append("g")
-	    .attr("transform", "translate(" + (width/2 + margin.left) + "," + (height/2 + margin.top) + ")")
+		.attr("transform", "translate("+ (width/2 + margin.left) + ","+ (height/2 + margin.top) + ")")
 		.datum(loom(dataAgg));	
 
 	////////////////////////////////////////////////////////////
@@ -132,7 +167,7 @@ d3.json('data/loom_cluster_terms.json', function (error, dataAgg) {
 	titles.append("text")
 		.attr("class", "character-note")
 		.attr("x", 0)
-		.attr("y", innerRadius/2)
+		.attr("y", innerRadius/1.5)
 		.attr("dy", "0.35em");
 					
 	////////////////////////////////////////////////////////////
@@ -140,7 +175,7 @@ d3.json('data/loom_cluster_terms.json', function (error, dataAgg) {
 	////////////////////////////////////////////////////////////
 
 	var arcs = g.append("g")
-	    .attr("class", "arcs")
+		.attr("class", "arcs")
 	  .selectAll("g")
 	    .data(function(s) { 
 			return s.groups; 
@@ -151,7 +186,14 @@ d3.json('data/loom_cluster_terms.json', function (error, dataAgg) {
 			d.pullOutSize = (pullOutSize * ( d.startAngle > Math.PI + 1e-2 ? -1 : 1)) 
 		})
  	 	.on("mouseover", function(d) {
-			  
+
+			//add arc labels on interaction
+			d3.selectAll(".outer-labels")
+			  .transition()
+			d3.selectAll(".outer-label")
+			  .style("opacity", 0.4)
+			d3.selectAll(".outer-label-values")
+			   .style("opacity", 0.4)
 			
 			//Hide all other arcs	
 			d3.selectAll(".arc-wrapper")
@@ -185,6 +227,14 @@ d3.json('data/loom_cluster_terms.json', function (error, dataAgg) {
  	 	})
      	.on("mouseout", function(d) {
 
+			//add arc labels on interaction
+			d3.selectAll(".outer-labels")
+			  .transition()
+			d3.selectAll(".outer-label")
+			  .style("opacity", 0)
+			d3.selectAll(".outer-label-values")
+			   .style("opacity", 0)
+			
 			d3.selectAll(".texts")
 				.transition()
 				.style("opacity", 0)
@@ -196,7 +246,7 @@ d3.json('data/loom_cluster_terms.json', function (error, dataAgg) {
 			//Show all strings again
 		    d3.selectAll(".string")
 		      	.transition()
-		        .style("opacity", defaultOpacity);
+				.style("opacity", 0.04);
 				
 			//Show all characters again
 			d3.selectAll(".inner-label")
@@ -209,7 +259,7 @@ d3.json('data/loom_cluster_terms.json', function (error, dataAgg) {
 	    .style("fill", function(d) { return color(d.outername); })
 	    .attr("d", arc)
 		.attr("transform", function(d, i) { //Pull the two slices apart
-			  return "translate(" + d.pullOutSize + ',' + 0 + ")";
+			  return "translate("+ d.pullOutSize + ',' + 0 + ")";
 		 });
 		 					
 	////////////////////////////////////////////////////////////
@@ -220,26 +270,28 @@ d3.json('data/loom_cluster_terms.json', function (error, dataAgg) {
 	var outerLabels = arcs.append("g")
 		.each(function(d) { d.angle = ((d.startAngle + d.endAngle) / 2); })
 		.attr("class", "outer-labels")
-		.attr("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
+		.attr("text-anchor", function(d) { return d.angle > Math.PI ? "end": null; })
 		.attr("transform", function(d,i) { 
 			var c = arc.centroid(d);
-			return "translate(" + (c[0] + d.pullOutSize) + "," + c[1] + ")"
-			+ "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
-			+ "translate(" + 26 + ",0)"
-			+ (d.angle > Math.PI ? "rotate(180)" : "")
+			return "translate("+ (c[0] + d.pullOutSize) + ","+ c[1] + ")"
+			+ "rotate("+ (d.angle * 180 / Math.PI - 90) + ")"
+			+ "translate("+ 26 + ",0)"
+			+ (d.angle > Math.PI ? "rotate(180)": "")
 		})
 		
 	//The outer name
 	outerLabels.append("text")
 		.attr("class", "outer-label")
 		.attr("dy", ".35em")
+		.style("opacity", defaultOpacity)
 		.text(function(d,i){ return d.outername });
 		
 	//The value below it
 	outerLabels.append("text")
 		.attr("class", "outer-label-value")
 		.attr("dy", "1.5em")
-		.html(function(d,i){ return numFormat(d.value) + " top words: </br> surgery </br> cancer </br> treatment </br> need </br> family </br> time </br> work"; });
+		.style("opacity", defaultOpacity)
+		.html(function(d,i){ return numFormat(d.value) });
 		
 	////////////////////////////////////////////////////////////
 	////////////////// Draw inner strings //////////////////////
@@ -279,6 +331,15 @@ d3.json('data/loom_cluster_terms.json', function (error, dataAgg) {
 		.attr("dy", ".35em")
 	    .text(function(d,i) { return d.name; })
  	 	.on("mouseover", function(d) {
+
+			//add arc labels on interaction
+			d3.selectAll(".outer-labels")
+			  .transition()
+			d3.selectAll(".outer-label")
+			  .style("opacity", 0.4)
+			d3.selectAll(".outer-label-values")
+			   .style("opacity", 0.4)
+			
 			
 			//Show all the strings of the highlighted character and hide all else
 		    d3.selectAll(".string")
@@ -306,7 +367,7 @@ d3.json('data/loom_cluster_terms.json', function (error, dataAgg) {
 				// 	console.log(d.name);
 				// 	return characterNotes[s.outername];
 					
-				// 	// return numFormat(value) + (value === 1 ? " word" : "test words"); 
+				// 	// return numFormat(value) + (value === 1 ? "word": "test words"); 
 					
 				// });
 			
@@ -338,15 +399,25 @@ d3.json('data/loom_cluster_terms.json', function (error, dataAgg) {
 				
 		})
      	.on("mouseout", function(d) {
+
+			//add arc labels on interaction
+			d3.selectAll(".outer-labels")
+			  .transition()
+			d3.selectAll(".outer-label")
+			  .style("opacity", 0)
+			d3.selectAll(".outer-label-values")
+			   .style("opacity", 0)
+			
+
 			
 			//Put the string opacity back to normal
 		    d3.selectAll(".string")
 		      	.transition()
-				.style("opacity", defaultOpacity);
+				.style("opacity", 0.04);
 				
 			//Return the word count to what it was
 			d3.selectAll(".outer-label-value")	
-				.text(function(s,i){ return numFormat(s.value) + " words"; });
+				.text(function(s,i){ return numFormat(s.value)});
 				
 			//Show all arcs again
 			d3.selectAll(".arc-wrapper")
@@ -397,10 +468,10 @@ function wrap(text, width) {
 
 	while (word = words.pop()) {
 	  line.push(word);
-	  tspan.text(line.join(" "));
+	  tspan.text(line.join(""));
 	  if (tspan.node().getComputedTextLength() > width) {
 		line.pop();
-		tspan.text(line.join(" "));
+		tspan.text(line.join(""));
 		line = [word];
 		tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
 	  }

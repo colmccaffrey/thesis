@@ -4,17 +4,14 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	    <title>The words of LotR</title>
-	    <meta name="author" content="Nadieh Bremer">
-	    <meta name="description" content="Data Sketches - July - Movies - Nadieh - The words in LotR">
-	    <meta name="keywords" content="data, visualization, visualisation, data visualization, data visualisation, information, information visualization, information visualisation, dataviz, datavis, infoviz, infovis, collaboration, data art">
-		
+	    <title>Sum of Us</title>
+	    
 		<!-- Google fonts -->
-		<link href="https://fonts.googleapis.com/css?family=Macondo+Swash+Caps|Macondo" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat|Lato" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Cormorant:300,400" rel="stylesheet">
 		
 		<!-- Styling -->
-		<link href="style.css" rel="stylesheet">
+		<!-- <link href="style.css" rel="stylesheet"> -->
 		
 		<!-- D3 v4 -->
 		<script src="https://d3js.org/d3.v4.min.js"></script>
@@ -24,11 +21,34 @@
         <!-- <script src="string.js"></script> -->
 <style>
 html { font-size: 62.5%; } 
-
+ 
 body {
-  font-family: 'Cormorant', serif;
+  font-family: 'Lato', sans-serif;
   font-size: 1.2rem;
   fill: #b9b9b9;
+}
+p {
+    font-size: 13px;
+    opacity: 0.70;
+}
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+}
+h1 {
+    font-size: 42px;
+    font-weight: 400;
+}
+h2 {
+    font-size: 28px;
+    font-weight: 300;
+}
+h3 {
+    font-size: 18px;
+    font-weight: 300;
+}
+h4 {
+    font-size: 18px;
+    font-weight: 200;
 }
 
 .lotr-content-wrapper {
@@ -93,15 +113,17 @@ a, a:link, a:visited, a:active {
   	border-bottom: 1px dotted rgba(0, 0, 0, .5);
 }
 
-.MiddleEarth {
-	font-family: 'Macondo', cursive;
-	color: #53821a;
+rect,
+path,
+text,
+g,
+line {
+  transition: all 0.2s ease-in-out 0.2s;
 }
-
 /*--- chart ---*/
 
 .name-title {
-	font-family: 'Macondo Swash Caps', cursive;
+	/* font-family: 'Macondo Swash Caps', cursive; */
 	font-size: 2.8rem;
 	fill: #232323;
 	cursor: default;
@@ -117,19 +139,19 @@ a, a:link, a:visited, a:active {
 .character-note {
 	text-anchor: middle;
 	font-size: 1.4rem;
-  	fill: #232323;
+    fill: #232323;
 /*	font-weight: 300;*/
 }
 			
 .inner-label {
-	font-family: 'Macondo Swash Caps', cursive;
+	/* font-family: 'Macondo Swash Caps', cursive; */
 	font-size: 1.4rem;
 	fill: #232323;
-	cursor: default;
+    cursor: default;
 }
 
 .outer-label {
-	font-family: 'Macondo', cursive;
+	/* font-family: 'Macondo', cursive; */
 	font-size: 1.6rem;
 	fill: #5f5f5f;
 	cursor: default;
@@ -139,27 +161,91 @@ a, a:link, a:visited, a:active {
   	font-size: 1.2rem;
   	fill: #b9b9b9;
 }
-    </style>
+#lotr-chart {
+    display: block;
+}
+
+/* app layout */
+.container {
+	width: 100%;
+    display: block;
+}
+.section {
+    position: relative;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    }
+.content-1 {
+    display: block;
+    /* width: 100%; */
+    width: 40%;
+    padding: 5%;
+}
+
+.content-1-3 {
+    display: block;
+    width: 29.3%;
+    /* padding-top: 40px; */
+    padding-left: 3%;
+    padding-right: 2%;
+
+
+}
+.content-2-3 {
+    display: block;
+    width: 66.7%;
+}
+
+.display {
+    margin-top: 30%;
+    height: 100vh;
+    align-items: center;
+}
+
+
+@media (max-width: 776px) {
+    .section {
+        flex-wrap: wrap;
+    }
+    .content-2-3 {
+        width: 100%;
+    }
+    .content-1-3 {
+        width: 100%;
+    }
+
+}
+</style>
 		
 	</head>
 	<body>
-		
-		<div class="lotr-content-wrapper">
-			<h1 id="lotr-title">Who's speaking in <span class="MiddleEarth">Middle Earth</span></h1>
-			<h4 id="lotr-subtitle">How many words have the members of the Fellowship spoken across Middle Earth during all 3 extended editions of the Lord of the Rings</h4>
-			<div id="lotr-intro">
-				In more than 11 hours of the LotR trilogy all characters combined speak approximately 32,000 words. The 9 members of the Fellowship alone take up about 17,000 of these words, a bit more than half. In the visualization below you can find out how many words a member has spoken at each general location throughout the trilogy.<br>The members have been sorted from Gandalf who had the most lines, to Legolas, who spoke even less than Boromir, even though the latter was only in one movie (and some extended scenes).</div>
-			<div id="lotr-note">Hover over characters or locations to get a more detailed overview</div>
-		</div>
-			<div id="lotr-chart"></div>
-			
-		<div class="lotr-content-wrapper">
-			<div id="lotr-footer">
-				<div id="lotr-credit">Created by Nadieh Bremer | <a href="http://www.visualcinnamon.com/">VisualCinnamon.com</a></div>
-				<div id="lotr-sources">Based on a <a href="https://github.com/jennybc/lotr">many eyes dataset</a> that showed the number of words per character per scene. I then manually added the location per scene by combining movie scripts, maps and my own memory</div>
-			</div>
-		</div>
-		
+    <div class="container">
+        <div class="section">
+            <div class="content-1 center">
+                <div class="display">
+                    <h1>The Sum of Us</h1>
+                <h3> What can crowdfunding tell us about the gaps in the American healthcare system?</h3>
+                </div>
+            </div>
+        </div>
+        <div class="section main">
+            <div class="content-1-3">
+                <h1>Campaign Word Clusters</h1>
+                <h3>Identifying needs through unstructured learning</h3>
+                <div><p>The majority of costs in healthcare are incurred by a fraction of the population but with the current system nearly 1 in 10 Americans resort to crowdfunding for medical costs. We collected data on crowdfunding campaigns from “Medical”, “Emergency” and “Memorial” Categories and analyzed them with k-means clustering to gain more insight on what people are campaigning for and what makes for a successful campaign. Hover over the chart to explore the clusters.</p></div>
+            </div>
+            <div class="content-2-3">
+                <div id="lotr-chart"></div>
+            </div>
+        </div>
+        </div>
 		<script src="example_loom_script.js"></script>
 		
     </body>
