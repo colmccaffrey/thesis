@@ -12,7 +12,22 @@
   h1, h2, h3, h4 {
     font-family: 'Montserrat', sans-serif;
 }
-
+a {
+  color: #212121;
+  opacity: 1;
+}
+.small {
+  text-transform: upperclass;
+  font-size: 11px;
+  font-family: 'Lato', sans-serif;
+  margin-top: .5em;
+  margin-bottom: .5em;
+  font-weight: 200;
+}
+a:hover {
+  color: #df65b0;
+  opacity: 0.8;
+}
   .y.axis line {
     fill: none;
     stroke: #990000;
@@ -68,14 +83,15 @@
   }
 
   .micro-content {
-      width: 67%;
+      /* width: 67%; */
       display: flex;
   }
 
   .micro-content div {
-    width: 22%;
-    padding-right: 3%;
+    width: 35%;
+    padding-right: 2%;
     padding-bottom: 3%;
+    margin-left: 4%;
    }
  
     /* div.col  {
@@ -162,48 +178,201 @@ h4 {
     position: relative;
     padding: 1rem;
     display: flex;
+    flex-wrap: nowrap;
+}
+.section-wrap {
+    position: relative;
+    width: 100%;
+    padding: 1rem;
+    display: block;
     flex-wrap: wrap;
 }
+
 #barcode-chart {
-  padding: 1rem;
+  /* padding: 1rem; */
 }
+.two-col {
+  width: 45%;
+  padding-right: 5%;
+}
+.main {
+  padding-left: 3%;
+}
+.dev-links {
+  color: darkgrey;
+  font-size: 11px; 
+}
+.content-1-3 {
+    display: block;
+    position: relative;
+    width: 29.3%;
+    /* padding-top: 40px; */
+    padding-left: 3%;
+    padding-right: 2%;
+}
+.content-2-3 {
+    position: relative;
+    display: block;
+    width: 66.7%;
+}
+
+#details {
+  padding-right: 5%;
+  max-width: 250px; 
+
+}
+.story-scroll {
+  height: auto;
+  max-height: 250px;
+  overflow: auto;
+}
+.col h3 {
+  align-content: center;
+  padding-top: 30px;
+}
+div.chart-title {
+  width: auto;
+  margin-top: 0;
+  margin-left: 0;
+
+}
+.chart-title {
+  color: #c994c7;
+}
+
+
 </style>
 <body>
 <div class="container">
-  <div class="section"><h1>one</h1></div>
-  <div class="section">
-    <p>one</p>
-    <p>two</p>
-  </div>           
+  <div class="main">
+    <div class="section-wrap">
+      <h1>How the Clusters Stack Up</h1>
+      <h3>Exploring campaigns Success and Engagement Rates</h3>
+    </div>
+        <div class="content-2-3 ">
+            <div class="section">
+                <div class="two-col">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at metus arcu. Donec eu augue at dolor tincidunt maximus. Nullam risus metus, dapibus vel neque id, consequat dictum mi. Integer eu felis suscipit nunc blandit dapibus in ut quam. In porttitor non ligula ut dictum. Phasellus mi nisl, consequat ac pulvinar vel, blandit sed mauris. Vestibulum rutrum purus sit amet lacus tincidunt malesuada. Duis euismod elementum malesuada. Suspendisse libero tellus, accumsan at elit sit amet, gravida finibus orci.</p>
+                </div>
+                <div class="two-col">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at metus arcu. Donec eu augue at dolor tincidunt maximus. Nullam risus metus, dapibus vel neque id, consequat dictum mi. Integer eu felis suscipit nunc blandit dapibus in ut quam. In porttitor non ligula ut dictum. Phasellus mi nisl, consequat ac pulvinar vel, blandit sed mauris. Vestibulum rutrum purus sit amet lacus tincidunt malesuada. Duis euismod elementum malesuada. Suspendisse libero tellus, accumsan at elit sit amet, gravida finibus orci.</p>
+                </div>
+              </div>
+        </div>
+      <div class="content-1-3 ">
+      <!-- <div class="two-col"> -->
+      </div>
    <!-- set up microcontent to have unique identifier as well? pass as parameter? -->
         <div id="barcode-chart">
-            <div class="micro-content">
-                <div class="col" id="g41-chart"></div>
-                <div class="col" id="g21-chart"></div>
-                <div class="col" id="g31-chart"></div>
-                <div class="col" id="g11-chart"></div>
+          <div class="section">
+            <div class="content-2-3 ">
+              <div class="micro-content">
+                  <div class="chart-title">
+                    <h3>Group 1</h3>
+                    <p class="small">
+                        cancer<br/>
+                        treatments<br/>
+                        diagnosis<br/>
+                        need<br/>
+                        stage<br/>
+                        recent<br/>
+                        chemotherapy<br/>
+                        know
+                      
+                    </p>
+                  </div>
+                  <div class="col" id="g21-chart"></div>
+                  <!-- <div class="col" id="g31-chart"></div> -->
+                  <div class="col" id="g11-chart"></div>
+              </div>
+              <div class="micro-content">
+                  <div class="chart-title">
+                    <h3>Group 2</h3>
+                    <p class="small">
+                        heart<br/>
+                        medical<br/>
+                        surgery<br/>
+                        family<br/>
+                        recovery<br/>
+                        work<br/>
+                        time<br/>
+                        home
+                    </p>
+                  </div>
+                  <div class="col" id="g22-chart"></div>
+                  <!-- <div class="col" id="g32-chart"></div> -->
+                  <div class="col" id="g12-chart"></div>
+              </div>
+              <div class="micro-content">
+                  <div class="chart-title">
+                    <h3>Group 3</h3>
+                    <p class="small">
+                        medical<br/>
+                        care<br/>
+                        life<br/>
+                        cost<br/>
+                        continue<br/>
+                        need<br/>
+                        family<br/>
+                        hospital
+                    </p>
+                  </div>
+                  <div class="col" id="g23-chart"></div>
+                  <!-- <div class="col" id="g33-chart"></div> -->
+                  <div class="col" id="g13-chart"></div>
+              </div>
+              <div class="micro-content">
+                      <div class="chart-title">
+                          <h3>Group 4</h3>
+                          <p class="small">
+                          work<br/>
+                          care<br/>
+                          job<br/>
+                          days<br/>
+                          need<br/>
+                          years<br/>
+                          getting<br/>
+                          medical
+                          </p>
+                      </div>
+                      <div class="col" id="g24-chart"></div>
+                      <!-- <div class="col" id="g34-chart"></div> -->
+                      <div class="col" id="g14-chart"></div>
+                </div>
+            </div> 
+            <div class="content-1-3">
+              <div id="details">
+              </div>
             </div>
-            <div class="micro-content">
-                <div class="col" id="g42-chart"></div>
-                <div class="col" id="g22-chart"></div>
-                <div class="col" id="g32-chart"></div>
-                <div class="col" id="g12-chart"></div>
+        </div>  <!-- end chart -->
+        </div>   <!-- end section -->
+        <div id="subsection2" class="section-wrap">
+            <h1>Who's left out?</h1>
+            <div class="content-2-3 ">
+                <div class="section">
+                    <div class="two-col">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at metus arcu. Donec eu augue at dolor tincidunt maximus. Nullam risus metus, dapibus vel neque id, consequat dictum mi. Integer eu felis suscipit nunc blandit dapibus in ut quam. In porttitor non ligula ut dictum. Phasellus mi nisl, consequat ac pulvinar vel, blandit sed mauris. Vestibulum rutrum purus sit amet lacus tincidunt malesuada. Duis euismod elementum malesuada. Suspendisse libero tellus, accumsan at elit sit amet, gravida finibus orci.</p>
+                    </div>
+                    <div class="two-col">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at metus arcu. Donec eu augue at dolor tincidunt maximus. Nullam risus metus, dapibus vel neque id, consequat dictum mi. Integer eu felis suscipit nunc blandit dapibus in ut quam. In porttitor non ligula ut dictum. Phasellus mi nisl, consequat ac pulvinar vel, blandit sed mauris. Vestibulum rutrum purus sit amet lacus tincidunt malesuada. Duis euismod elementum malesuada. Suspendisse libero tellus, accumsan at elit sit amet, gravida finibus orci.</p>
+                    </div>
+                </div>
             </div>
-            <div class="micro-content">
-                <div class="col" id="g43-chart"></div>
-                <div class="col" id="g23-chart"></div>
-                <div class="col" id="g33-chart"></div>
-                <div class="col" id="g13-chart"></div>
-            </div>
-            <div class="micro-content">
-                    <div class="col" id="g44-chart"></div>
-                    <div class="col" id="g24-chart"></div>
-                    <div class="col" id="g34-chart"></div>
-                    <div class="col" id="g14-chart"></div>
-            </div>  
-        </div>
+          <div class="content-1-3 ">
+          <!-- <div class="two-col"> -->
+          </div>       
+         </div>
+         </div>
+        <div class="section-wrap">
+          <p class="dev-links">
+            <em>dev links: </em>
+            <a href="loom.html"> Cluster Words | </a> 
+            <a href="barcode.html"> Cluster Campaign Success | </a>
+            <a href="parallel_c_ex.html"> Raw Data Explore</a>
+          </p>
       </div>
     </div>
+  </div>
 </body>
   
   <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -215,8 +384,10 @@ h4 {
 const clusterNum = 4;
 // const cats = ["cluster", "donors", "raised", "shares", "goal"]
 
+    
+//  d3.csv("data/gfm-900.csv", ready);
+d3.csv("data/gfmCleanHealthFullCols.csv", ready);
 
- d3.csv("data/gfm-900.csv", ready);
   
   function ready(err, data) {
     if (err) throw "error loading data";
@@ -224,16 +395,18 @@ const clusterNum = 4;
     data.forEach(function(d) {
       d.cluster = +d.cluster
       d.donors = +d.donors
-      d.raised = +d.raised
       d.shares = +d.shares
+      d.engagement = +d.engagement
+      d.success = +d.success
+      d.raised = +d.raised
       d.goal = +d.goal
     })
     for (var i = 1; i <=clusterNum; i++) {
         var cleanData = data.filter(function(d) { return d.cluster == i })
-        draw("#g1" + i + "-chart", "donors", i, cleanData );
-        draw("#g2"  + i + "-chart", "raised", i, cleanData);
-        draw("#g3" + i + "-chart", "shares", i, cleanData);
-        draw("#g4" + i + "-chart", "goal", i, cleanData);
+        draw("#g2"  + i + "-chart", "success", i, cleanData);
+        draw("#g1" + i + "-chart", "engagement", i, cleanData );
+        // draw("#g3" + i + "-chart", "shares", i, cleanData);
+        //  draw("#g4" + i + "-chart", "Cluster", i, cleanData);
     }
     
     
@@ -272,9 +445,11 @@ function draw(selector, col, clust, data){
   //Defines the y axis styles`
   var xAxis = d3.axisBottom()
     .scale(xScale)
-    .tickPadding(8)
-    .ticks(8)
-    .tickFormat(function(d) { return d * 1 + "%"}) 
+    .tickPadding(5)
+    .ticks(4)
+    // .tickValues( xAxis.ticks( 5 ).concat( xAxis.domain() )
+    // .tickFormat(function(d) { return xscale * 10 + "%"}) 
+    .tickFormat(d3.format(".2f"))
   
 //     d3.csv("data/gfm-900.csv", ready);
   
@@ -312,17 +487,24 @@ function draw(selector, col, clust, data){
       .attr("y1", 50)
       .attr("y2", 150)
       .style("stroke", function(d) {
-        var j = maxX/3;
+        var aves =[];
+        if (d[col] == "success") {
+          aves = [50, 74, 57, 70, 50];
+        } else {
+          aves =[21, 21, 18, 17, 17];
+        }
+        var j = aves[d.cluster];
+        // var j = maxX/3;
         if (d[col] < j) {
             return '#c994c7';
-        } else if (d[col] >= j && d[col] < 2*j) {
+        } else if (d[col] > j && d[col] < 100) {
             return '#df65b0';
         } else {
             return '#980043';
         }
        // "#cc0000");
       })
-      .style("stroke-width", 2)
+      .style("stroke-width", 3)
       .style("opacity", 0.5)
       .on("mouseover", function(d) {
         var right = d3.event.pageX > window.innerWidth / 2;
@@ -330,31 +512,47 @@ function draw(selector, col, clust, data){
         d3.select(this)
           .transition().duration(100)
           .attr("y1", 0)
-          .style("stroke-width", 3)
+          .style("stroke-width", 4)
           .style("opacity", 1);
   
         div.transition(300)
           .style("opacity", 1)
-        div.html("<h3 class='bolded'>Cluster " + d.cluster + ": </h3> " + d[col] + ' ' + col)
+        div.html('<p class="small">Group ' + d.cluster + ': </p> ' + d[col] + '% ' + col);
         
         //   var offset = top ? div.node().offsetHeight + 1 : -1;
         var offset = this.y;
 
         div
-          .style("left", (d3.event.pageX + 10) + "px")
-          .style("top", (height - this.y) + "px")  
+          .style("left", (d3.event.pageX - 175) + "px")
+
+          .style("margin-top", (height-350) + "px")  
+          console.log(y);
         // .style("top", (height - 80) + "px")    
       })
+      
+      //on click to show campaign details
+      .on("click", function(d, i){
+          var topY = d3.event.pageY;
+          var detailsPadding = topY - 600 + "px";
+          console.log(detailsPadding)
+          var detailsBox = d3.select("#details")
+              console.log(d);
+              // .style("top", detailsPadding + "px")
+              detailsBox.html('<div style="padding-top:' + detailsPadding + ';"> <h4><a target=_blank" href="' + d.url + '">' + d.title + '</a></h4><p class="small">Engagement Rate: ' + d.engagement + '%</p><p class="small">Success Rate: ' + d.success + '%</p><p class="small">Length of Campaign: ' + d.length + ' months</p><p class="story-scroll">' + d.story + '</p><p class="small"><em> data last updated 4/28/2019, <a href="'+ d.url + '"> see campaign update</a></em></p></div> ');
+          console.log(d.cluster);
+
+      })
+
       .on("mouseout", function(d) {
         d3.select(this)
           .transition().duration(100)
           .attr("y1", 50)
-          .style("stroke-width", 2)
+          .style("stroke-width", 3)
           .style("opacity", 0.4);
   
         div.transition(300)
           .style("opacity", 0)  
-      })    
+      })       
   
   //RESPONSIVENESS
     d3.select(window).on("resize", resized);

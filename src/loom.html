@@ -208,7 +208,13 @@ line {
     height: 100vh;
     align-items: center;
 }
-
+.section-wrap {
+    position: relative;
+    width: 100%;
+    padding: 1rem;
+    display: block;
+    flex-wrap: wrap;
+}
 
 @media (max-width: 776px) {
     .section {
@@ -231,7 +237,7 @@ line {
             <div class="content-1 center">
                 <div class="display">
                     <h1>The Sum of Us</h1>
-                <h3> What can crowdfunding tell us about the gaps in the American healthcare system?</h3>
+                    <h3> What can crowdfunding tell us about the gaps in the American healthcare system?</h3>
                 </div>
             </div>
         </div>
@@ -245,6 +251,14 @@ line {
                 <div id="lotr-chart"></div>
             </div>
         </div>
+        <div class="section-wrap">
+                <p class="dev-links">
+                  <em>dev links: </em>
+                  <a href="loom.html"> Cluster Words | </a> 
+                  <a href="barcode.html"> Cluster Campaign Success | </a>
+                  <a href="parallel_c_ex.html"> Raw Data Explore</a>
+                </p>
+            </div>
         </div>
 		<script src="example_loom_script.js"></script>
 		
