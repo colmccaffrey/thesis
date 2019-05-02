@@ -34,10 +34,19 @@ svg {
   text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
   cursor: move;
 }
+.section-wrap {
+    position: relative;
+    width: 100%;
+    padding: 1rem;
+    display: block;
+    flex-wrap: wrap;
+}
 
 </style>
 <body>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.0.0/d3.js"></script>
+
 <script>
 
 var margin = {top: 30, right: 10, bottom: 10, left: 10},
@@ -60,6 +69,7 @@ var svg = d3.select("body").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 d3.csv("data/gfm-900.csv", function(error, cars) {
+
 
   // Extract the list of dimensions and create a scale for each.
   x.domain(dimensions = d3.keys(cars[0]).filter(function(d) {
@@ -165,3 +175,13 @@ function brush() {
 }
 
 </script>
+
+<div class="section-wrap">
+    <p class="dev-links">
+      <em>dev links: </em>
+      <a href="loom.html"> Cluster Words | </a> 
+      <a href="barcode.html"> Cluster Campaign Success | </a>
+      <a href="parallel_c_ex.html"> Raw Data Explore</a>
+    </p>
+</div>
+</body>
