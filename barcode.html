@@ -252,10 +252,10 @@ div.chart-title {
         <div class="content-2-3 ">
             <div class="section">
                 <div class="two-col">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at metus arcu. Donec eu augue at dolor tincidunt maximus. Nullam risus metus, dapibus vel neque id, consequat dictum mi. Integer eu felis suscipit nunc blandit dapibus in ut quam. In porttitor non ligula ut dictum. Phasellus mi nisl, consequat ac pulvinar vel, blandit sed mauris. Vestibulum rutrum purus sit amet lacus tincidunt malesuada. Duis euismod elementum malesuada. Suspendisse libero tellus, accumsan at elit sit amet, gravida finibus orci.</p>
+                  <p>As of April 2019, health expenses account for 17.9% of the U.S. GDP, the highest of developed countries in the world. Medical costs are number 1 cause of bankruptcy in U.S. and  federal study conducted in December 2018 shows that 40% of American households can’t afford a $400 financial emergency. The average amount raised per campaign is is $10, 965 compared to what the U.S government pays on healthcare per individual, $8, 234.</p>
                 </div>
                 <div class="two-col">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at metus arcu. Donec eu augue at dolor tincidunt maximus. Nullam risus metus, dapibus vel neque id, consequat dictum mi. Integer eu felis suscipit nunc blandit dapibus in ut quam. In porttitor non ligula ut dictum. Phasellus mi nisl, consequat ac pulvinar vel, blandit sed mauris. Vestibulum rutrum purus sit amet lacus tincidunt malesuada. Duis euismod elementum malesuada. Suspendisse libero tellus, accumsan at elit sit amet, gravida finibus orci.</p>
+                    <p>Since 2013 average national salaries have stagnated while the out of-pocket costs per individual with employer supported healthcare has risen 17.9%, or around $5,893.  For those with a chronic disease? The costs have risen $20,000 on average per individual. Hover over the graphs below to see which campaigns, sorted by topics and terms, raised the most money in the shortest amount of time (success rate), and which had the highest rate of people donating who interacted with the campaign (engagement rate).                      </p>
                 </div>
               </div>
         </div>
@@ -351,10 +351,10 @@ div.chart-title {
             <div class="content-2-3 ">
                 <div class="section">
                     <div class="two-col">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at metus arcu. Donec eu augue at dolor tincidunt maximus. Nullam risus metus, dapibus vel neque id, consequat dictum mi. Integer eu felis suscipit nunc blandit dapibus in ut quam. In porttitor non ligula ut dictum. Phasellus mi nisl, consequat ac pulvinar vel, blandit sed mauris. Vestibulum rutrum purus sit amet lacus tincidunt malesuada. Duis euismod elementum malesuada. Suspendisse libero tellus, accumsan at elit sit amet, gravida finibus orci.</p>
+                      <p>Digital literacy should not be a prerequisite to accessing affordable healthcare, but with more than 1 in 3 campaigns on the GoFundMe platform being for Medical expenses of all kind, it is slowly becoming one.  This is not a sustainable solution for a healthcare substitute, and many are being left out of the conversation particularly due the the stigma of crowdfunding, people with diseases perceived to be “choices”  or “blameworthy” diseases like mental health and addiction or “getting my life together as a single mom with a sick kid”, as compared to “faultless” diseases such as cancer or a genetic disorder. </p>
                     </div>
                     <div class="two-col">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at metus arcu. Donec eu augue at dolor tincidunt maximus. Nullam risus metus, dapibus vel neque id, consequat dictum mi. Integer eu felis suscipit nunc blandit dapibus in ut quam. In porttitor non ligula ut dictum. Phasellus mi nisl, consequat ac pulvinar vel, blandit sed mauris. Vestibulum rutrum purus sit amet lacus tincidunt malesuada. Duis euismod elementum malesuada. Suspendisse libero tellus, accumsan at elit sit amet, gravida finibus orci.</p>
+                        <p> The social element also cannot be ignored, we can in the charts above that the campaigns with higher engagement yield higher success rate, so those without a build in network or community to help promote their campaign are more likely to suffer. “If there’s already a hierarchy of affliction and need in society, then crowdfunding often works to exacerbate it.”</p>
                     </div>
                 </div>
             </div>
@@ -366,7 +366,7 @@ div.chart-title {
         <div class="section-wrap">
           <p class="dev-links">
             <em>dev links: </em>
-            <a href="loom.html"> Cluster Words | </a> 
+            <a href="index.html"> Cluster Words | </a> 
             <a href="barcode.html"> Cluster Campaign Success | </a>
             <a href="parallel_c_ex.html"> Raw Data Explore</a>
           </p>
@@ -517,7 +517,7 @@ function draw(selector, col, clust, data){
   
         div.transition(300)
           .style("opacity", 1)
-        div.html('<p class="small">Group ' + d.cluster + ': </p> ' + d[col] + '% ' + col);
+        div.html('<p class="small"> ' + d.title + ' </p><p>' + d[col] + '% ' + col);
         
         //   var offset = top ? div.node().offsetHeight + 1 : -1;
         var offset = this.y;
