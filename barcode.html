@@ -88,8 +88,8 @@ a:hover {
   }
 
   .micro-content div {
-    width: 35%;
-    padding-right: 2%;
+    /* width: 35%;
+    padding-right: 2%; */
     padding-bottom: 3%;
     margin-left: 4%;
    }
@@ -246,8 +246,8 @@ div.chart-title {
 <div class="container">
   <div class="main">
     <div class="section-wrap">
-      <h1>How the Clusters Stack Up</h1>
-      <h3>Exploring campaigns Success and Engagement Rates</h3>
+      <h1>Campaign Success Rates</h1>
+      <h3>Which groups performed better?</h3>
     </div>
         <div class="content-2-3 ">
             <div class="section">
@@ -283,7 +283,7 @@ div.chart-title {
                   </div>
                   <div class="col" id="g21-chart"></div>
                   <!-- <div class="col" id="g31-chart"></div> -->
-                  <div class="col" id="g11-chart"></div>
+                  <!-- <div class="col" id="g11-chart"></div> -->
               </div>
               <div class="micro-content">
                   <div class="chart-title">
@@ -301,7 +301,7 @@ div.chart-title {
                   </div>
                   <div class="col" id="g22-chart"></div>
                   <!-- <div class="col" id="g32-chart"></div> -->
-                  <div class="col" id="g12-chart"></div>
+                  <!-- <div class="col" id="g12-chart"></div> -->
               </div>
               <div class="micro-content">
                   <div class="chart-title">
@@ -319,7 +319,7 @@ div.chart-title {
                   </div>
                   <div class="col" id="g23-chart"></div>
                   <!-- <div class="col" id="g33-chart"></div> -->
-                  <div class="col" id="g13-chart"></div>
+                  <!-- <div class="col" id="g13-chart"></div> -->
               </div>
               <div class="micro-content">
                       <div class="chart-title">
@@ -337,7 +337,7 @@ div.chart-title {
                       </div>
                       <div class="col" id="g24-chart"></div>
                       <!-- <div class="col" id="g34-chart"></div> -->
-                      <div class="col" id="g14-chart"></div>
+                      <!-- <div class="col" id="g14-chart"></div> -->
                 </div>
             </div> 
             <div class="content-1-3">
@@ -386,7 +386,7 @@ const clusterNum = 4;
 
     
 //  d3.csv("data/gfm-900.csv", ready);
-d3.csv("data/gfmCleanHealthFullCols.csv", ready);
+d3.csv("data/test-med-15.csv", ready);
 
   
   function ready(err, data) {
@@ -400,11 +400,19 @@ d3.csv("data/gfmCleanHealthFullCols.csv", ready);
       d.success = +d.success
       d.raised = +d.raised
       d.goal = +d.goal
+      d.theme = getTheme(d.cluster)
     })
+    function getTheme(clusterNum) {
+      if (clusterNum == 0) {
+      return 0;
+      }
+    }
     for (var i = 1; i <=clusterNum; i++) {
-        var cleanData = data.filter(function(d) { return d.cluster == i })
+        var cleanData = data.filter(function(d) { 
+          return d.cluster == i - 1
+        })
         draw("#g2"  + i + "-chart", "success", i, cleanData);
-        draw("#g1" + i + "-chart", "engagement", i, cleanData );
+        // draw("#g1" + i + "-chart", "engagement", i, cleanData );
         // draw("#g3" + i + "-chart", "shares", i, cleanData);
         //  draw("#g4" + i + "-chart", "Cluster", i, cleanData);
     }
@@ -414,7 +422,7 @@ function draw(selector, col, clust, data){
     console.log(" draw i " + clust);
     
     
-  var margin = {top: 0, right: 0, bottom: 30, left: 0};
+  var margin = {top: 0, right: 0, bottom: 30, left: 5};
 
     console.log(selector);
   var constWidth = d3.select(selector).node().clientWidth;
@@ -445,11 +453,11 @@ function draw(selector, col, clust, data){
   //Defines the y axis styles`
   var xAxis = d3.axisBottom()
     .scale(xScale)
-    .tickPadding(5)
-    .ticks(4)
+    // .tickPadding(5)
+    .ticks(5)
     // .tickValues( xAxis.ticks( 5 ).concat( xAxis.domain() )
-    // .tickFormat(function(d) { return xscale * 10 + "%"}) 
-    .tickFormat(d3.format(".2f"))
+    // .tickFormat(function(d) { return xscale + "%"}) 
+    .tickFormat(d => (d * 1) + "%")
   
 //     d3.csv("data/gfm-900.csv", ready);
   
@@ -463,7 +471,7 @@ function draw(selector, col, clust, data){
     //Organizes the data  
     var maxX = d3.max(data, function(d) { return d[col]; });
     //Defines the xScale max
-    xScale.domain(d3.extent(data, function(d) { return d[col]; }));
+    xScale.domain([0, 150]);
   
     //Defines the yScale max
     yScale.domain([0, 175]);  
@@ -471,7 +479,7 @@ function draw(selector, col, clust, data){
     //Appends the x axis    
     var xAxisGroup = svg.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + height +  ")")
+      .attr("transform", "translate(5," + height +  ")")
       .call(xAxis);  
 
     //Binds data to strips
@@ -485,8 +493,9 @@ function draw(selector, col, clust, data){
       .attr("x2", function(d) { 
           return xScale(d[col]); })  
       .attr("y1", 50)
-      .attr("y2", 150)
+      .attr("y2", 125)
       .style("stroke", function(d) {
+        //sets stroke depending on mean of cluster - will need to reset for theme
         var aves =[];
         if (d[col] == "success") {
           aves = [50, 74, 57, 70, 50];
@@ -495,9 +504,9 @@ function draw(selector, col, clust, data){
         }
         var j = aves[d.cluster];
         // var j = maxX/3;
-        if (d[col] < j) {
+        if (d[col] <= j) {
             return '#c994c7';
-        } else if (d[col] > j && d[col] < 100) {
+        } else if (d[col] > j && d[col] <= 100) {
             return '#df65b0';
         } else {
             return '#980043';
@@ -505,7 +514,7 @@ function draw(selector, col, clust, data){
        // "#cc0000");
       })
       .style("stroke-width", 3)
-      .style("opacity", 0.5)
+      .style("opacity", 0.7)
       .on("mouseover", function(d) {
         var right = d3.event.pageX > window.innerWidth / 2;
   
@@ -517,7 +526,7 @@ function draw(selector, col, clust, data){
   
         div.transition(300)
           .style("opacity", 1)
-        div.html('<p class="small"> ' + d.title + ' </p><p>' + d[col] + '% ' + col);
+        div.html('<p class="small">' + d.cluster + ' ' + d.title + ' </p><p>' + d[col] + '% ' + col);
         
         //   var offset = top ? div.node().offsetHeight + 1 : -1;
         var offset = this.y;
@@ -526,7 +535,7 @@ function draw(selector, col, clust, data){
           .style("left", (d3.event.pageX - 175) + "px")
 
           .style("margin-top", (height-350) + "px")  
-          console.log(y);
+          // console.log(y);
         // .style("top", (height - 80) + "px")    
       })
       
@@ -548,7 +557,7 @@ function draw(selector, col, clust, data){
           .transition().duration(100)
           .attr("y1", 50)
           .style("stroke-width", 3)
-          .style("opacity", 0.4);
+          .style("opacity", 0.7);
   
         div.transition(300)
           .style("opacity", 0)  
@@ -560,7 +569,7 @@ function draw(selector, col, clust, data){
     function resized() {
   
       //new margin
-      var newMargin = {top: 0, right: 0, bottom: 30, left: 0};
+      var newMargin = {top: 0, right: 0, bottom: 30, left: 5};
   
       var newconstWidth = d3.select(selector).node().clientWidth;
       var newWidth = newconstWidth - newMargin.left - newMargin.right;
