@@ -1,6 +1,7 @@
 Top terms per cluster:
 
-Cluster 0 words: get,1674
+Cluster 0 words: 
+ get,1674
  help,4386
  go,1621
  time,2143
@@ -14,7 +15,8 @@ Cluster 0 words: get,1674
 
 
 
-Cluster 1 words: cancer,1557
+Cluster 1 words: 
+ cancer,1557
  treatment,1393
  help,4386
  breast,247
@@ -28,7 +30,8 @@ Cluster 1 words: cancer,1557
 
 
 
-Cluster 2 words: fire,163
+Cluster 2 words: 
+fire,163
  home,1055
  house,372
  lost,358
@@ -42,7 +45,8 @@ Cluster 2 words: fire,163
 
 
 
-Cluster 3 words: de,1033
+Cluster 3 words: 
+de,1033
  que,445
  la,423
  en,356
@@ -56,7 +60,8 @@ Cluster 3 words: de,1033
 
 
 
-Cluster 4 words: kidney,286
+Cluster 4 words: 
+ kidney,286
  transplant,267
  dialysis,69
  kidney,553
@@ -70,7 +75,8 @@ Cluster 4 words: kidney,286
 
 
 
-Cluster 5 words: car,358
+Cluster 5 words: 
+ car,358
  accident,265
  help,4386
  broken,143
@@ -84,7 +90,8 @@ Cluster 5 words: car,358
 
 
 
-Cluster 6 words: surgery,1638
+Cluster 6 words: 
+ surgery,1638
  help,4386
  years,1852
  work,2021
@@ -98,7 +105,8 @@ Cluster 6 words: surgery,1638
 
 
 
-Cluster 7 words: years,1852
+Cluster 7 words: 
+ years,1852
  help,4386
  treatment,1393
  life,1331
@@ -112,7 +120,8 @@ Cluster 7 words: years,1852
 
 
 
-Cluster 8 words: help,4386
+Cluster 8 words: 
+ help,4386
  family,2524
  friend,1221
  please,1119
@@ -126,7 +135,8 @@ Cluster 8 words: help,4386
 
 
 
-Cluster 9 words: hospital,1327
+Cluster 9 words: 
+ hospital,1327
  heart,758
  help,4386
  work,2021
