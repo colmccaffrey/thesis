@@ -253,22 +253,32 @@ line {
       pointer-events: all;
     }
     #term-swarm {
-        height: auto;
-        top: 10;
+        height: 650px;
+        width: 100%;
+        top: 0;
     }
-
+    .chart-container-full {
+        width: 100vw;
+    }
     .sticky {
         position: -webkit-sticky;
         position: sticky;
-        top: 0;
     }
     .terms-heading {
         width: 350px;
         margin-left: auto;
         margin-right: auto;
         position: sticky;
-        height: 100vh;
-        padding-top: 10%;
+        height: 70vh;
+        top: 20;
+    }
+    .align-bottom {
+        bottom: 0;
+        position: sticky;
+        width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+
     }
     section {
         overflow: visible;
@@ -294,18 +304,23 @@ line {
             </div>
         </div>
         <section>
-            <div class="sticky" id="term-swarm"><svg width="900" height="600"></svg>
-            </div>
-            <div class="content-1 center">
-                <div class="terms-heading">
-                        <h1>Top Terms</h1>
-                        <h3> What can crowdfunding tell us about the gaps in the American healthcare system?</h3>
-                        <ul>words
-                        <li>word</li>
-                        <li>word</li>
-                        <li>word</li>
-                        </ul>
+            <!-- <div class="chart-container-full"> -->
+                <div class="sticky" id="term-swarm">
+                    <!-- <svg width="900" height="600"></svg> -->
                 </div>
+            <!-- </div> -->
+            <div class="content-1 center">
+                    <div class="sticky terms-heading">
+                        <h1>Top Terms</h1>
+                        <h3>What can crowdfunding tell us about the gaps in the American healthcare system?</h3>
+                   </div> 
+                     <div class="align-bottom">
+                    <ul> words
+                    <li>word</li>
+                    <li>word</li>
+                    <li>word</li>
+                    </ul>
+                </div> 
             </div>
         </section>
         </div>
@@ -332,5 +347,6 @@ line {
         </div>
         <script src="example_loom_script.js"></script> -->
     <script src="js/terms.js"></script>
+    <!-- <script src="js/comparisons.js"></script> -->
 </body>
 </html>
