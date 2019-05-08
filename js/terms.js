@@ -2,20 +2,32 @@
 // m.render()
 // var width = m.innerWidth(), height = m.innerHeight(), svg = m.svg(), margin = {top: m.top(), left: m.left(), right: m.right()};
 
-var svg = d3.select("svg"),
-    margin = {top: 40, right: 100, bottom: 40, left: 100},
-    width = svg.attr("width") - margin.left - margin.right,
-    height = svg.attr("height") - margin.top - margin.bottom;
+var termDiv = document.getElementById("term-swarm");
+var svg = d3.select(termDiv).append("svg"),
+    margin = {top: 40, right: 50, bottom: 40, left: 50};
+
+    // width = svg.attr("width") - margin.left - margin.right,
+    // height = svg.attr("height") - margin.top - margin.bottom;
+function redraw(){
+    
+     var width = termDiv.clientWidth - margin.left - margin.right;
+     var height = termDiv.clientHeight - margin.top - margin.bottom;
+
+    // Use the extracted size to set the size of an SVG element.
+    svg
+      .attr("width", width)
+      .attr("height", height);
+    
 
 var formatValue = d3.format(",d");
 
 var x = d3.scaleLinear()
-    .rangeRound([0, width]);
+    .rangeRound([0, width-100]);
 
 var g = svg.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("swarm-terms.csv", type, function(error, data) {
+d3.csv("data/swarm-terms.csv", type, function(error, data) {
   if (error) throw error;
 
   x.domain(d3.extent(data, function(d) { return d.value; }));
@@ -61,4 +73,13 @@ function type(d) {
   d.value = +d.value;
   d.cluster = +d.cluster;
   return d;
+    }
 }
+redraw();
+// function redo() {
+//     var clearOld = d3.select(termDiv);
+//     clearOld.selectAll("svg").remove();
+// }
+
+window.addEventListener("resize", redraw);
+
