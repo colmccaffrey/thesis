@@ -146,7 +146,7 @@
    
          div.transition(300)
            .style("opacity", 1)
-         div.html('<p class="small">' + d.cluster + ' ' + d.title + ' </p><p>' + d[col] + '% ' + col);
+         div.html('<p class="small">' + d.title + ' </p><p>' + d[col] + '% ' + col);
          
          //   var offset = top ? div.node().offsetHeight + 1 : -1;
          var offset = this.y;
