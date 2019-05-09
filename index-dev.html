@@ -24,7 +24,7 @@ html, body {
     overflow: visible;
     font-family: 'Lato', sans-serif;
     font-size: 1.2rem;
-    fill: #b9b9b9;
+    /* fill: #b9b9b9; */
 }
 
 p {
@@ -51,6 +51,14 @@ h4 {
     font-weight: 200;
 }
 
+/* .cells circle {
+    pointer-events: all;
+}
+circle {
+    pointer-events: all;
+
+} */
+/* 
 .lotr-content-wrapper {
 	max-width: 900px;
 	margin: 0 auto;
@@ -111,59 +119,55 @@ a, a:link, a:visited, a:active {
 	text-decoration: none;
   	color: black;
   	border-bottom: 1px dotted rgba(0, 0, 0, .5);
-}
+} -->
 
-rect,
+/* rect,
 path,
 text,
 g,
 line {
   transition: all 0.2s ease-in-out 0.2s;
-}
+} */
 /*--- chart ---*/
 
-.name-title {
-	/* font-family: 'Macondo Swash Caps', cursive; */
+/* .name-title {
 	font-size: 2.8rem;
 	fill: #232323;
 	cursor: default;
 	text-anchor: middle;
-}
+} */
 
-.value-title {
+/* .value-title {
 	text-anchor: middle;
 	font-size: 1.8rem;
   	fill: #b9b9b9;
-}
+} */
 
-.character-note {
+/* .character-note {
 	text-anchor: middle;
 	font-size: 1.4rem;
     fill: #232323;
-/*	font-weight: 300;*/
-}
+} */
 			
-.inner-label {
-	/* font-family: 'Macondo Swash Caps', cursive; */
+/* .inner-label {
 	font-size: 1.4rem;
 	fill: #232323;
     cursor: default;
-}
+} */
 
-.outer-label {
-	/* font-family: 'Macondo', cursive; */
+/* .outer-label {
 	font-size: 1.6rem;
 	fill: #5f5f5f;
 	cursor: default;
 }
-
+*
 .outer-label-value {
   	font-size: 1.2rem;
   	fill: #b9b9b9;
 }
 #lotr-chart {
     display: block;
-}
+} */
 
 /* app layout */
 .container {
@@ -357,40 +361,45 @@ a:hover {
   color: #df65b0;
   opacity: 0.8;
 }
-  .y.axis line {
+  /* .y.axis line {
     fill: none;
     stroke: #990000;
     shape-rendering: crispEdges;
     stroke-width: 1px;
-  } 
+  }  */
 
   /* .x.axis line {
     display: none;
   } */
 
-/* .tick.g-baseline line {
+ /* .tick.g-baseline line {
     stroke: #990000;
     stroke-dasharray: 0;
     stroke-width: 2px;
-}  */
+}   */
 
-  /* .axis text {
-    font-family: sans-serif;
-    font-size: 12px;
+   /* .axis text {
+    font-size: 10px;
     pointer-events: none;
     fill: #a6a6a6;
   }
 
   .y.axis text {
     text-anchor: start !important;
-    font-size: 12px;
+    font-size: 10px;
     fill: #e6e6e6;
-  } */
+  } 
 
   .domain {
     display: none;
-  }
+  } */
 
+  .xLabel, .yLabel {
+    font-size: 14px;
+    fill: #cdcdcd;
+
+  }
+  
   /* .line {
     stroke: #262626;
     stroke-width: 2px;
@@ -401,11 +410,13 @@ a:hover {
     fill: #f2f2f2;
     opacity: 0.4;
   }
-
-  .g-label-text {
+*/
+  /* .g-label-text {
     font-family: sans-serif;
     font-size: 14px;
-  }
+    color: blue;
+  } */
+  /*
 
   .g-label-circle {
     fill: #4bc6df;

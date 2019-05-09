@@ -40,15 +40,15 @@ function update(var1, var2) {
     xAxis.transition().duration(1000).call(d3.axisBottom(x))
 
     // svg.selectAll(".xLabel")  
-   svg.append("text")  
-    .attr("class", "xLabel")           
-    .attr("transform",
-          "translate(" + (width/2) + " ," + 
-                         (height + margin.top + 20) + ")")
-    .style("text-anchor", "middle")
-    .text(var2);
+//    svg.append("text")  
+//     .attr("class", "xLabel")           
+//     .attr("transform",
+//           "translate(" + (width/2) + " ," + 
+//                          (height + margin.top + 20) + ")")
+//     .style("text-anchor", "middle")
+//     .text(var2);
 
-    svg.selectAll(".xLabel").exit().remove();
+//     svg.selectAll(".xLabel").exit().remove();
     // update lines
 
     // Add Y axis
@@ -64,8 +64,9 @@ function update(var1, var2) {
     .attr("y", 0 - margin.left)
     .attr("x",0 - (height / 2))
     .attr("dy", "1em")
-    .style("text-anchor", "middle")
+    .attr("class", "yLabel")
     .text("Group"); 
+    
 
 //     // Add X axis
 //   var x = d3.scaleLinear()
@@ -107,6 +108,37 @@ function update(var1, var2) {
       .attr("stroke", "grey")
       .attr("stroke-width", "1px")
 
+      var xL = svg.selectAll(".xLabel")
+      .data(data)
+    // update lines
+    xL
+      .enter()
+      .append("text")
+      .attr("class", "xLabel")
+      .merge(xL)
+      .transition()
+    //   .duration(1000)
+        // .attr("x1", function(d) { console.log(x(d[selectedd[var1]])) ; return x(d[selectedd[var1]]); })
+        // .attr("x2", function(d) { return x(d[selectedd[var1]]); })
+        // .attr("y1", y(0))
+        // .attr("y2", function(d) { return y(d.cluster); })
+        // .attr("stroke", "grey")
+    //   .attr("x1", x(0))
+    //   .attr("x2", function(d) { return x(d[var1]); })
+    //   .attr("y1", function(d) { return y(d.cluster); })
+    //   .attr("y2", function(d) { return y(d.cluster); })
+    //   .attr("stroke", "grey")
+    //   .attr("stroke-width", "1px")
+    //   svg.append("text")  
+    //   .attr("class", "xLabel")           
+      .attr("transform",
+            "translate(" + (width/2) + " ," + 
+                           (height + margin.top + 20) + ")")
+      .style("text-anchor", "middle")
+      .text(var2);
+  
+    //   svg.selectAll(".xLabel").exit().remove()
+
 
 
     // variable u: map data to existing circle
@@ -131,7 +163,11 @@ function update(var1, var2) {
             .attr("cx", function(d) { return x(d[var1]); })
             .attr("cy", function(d) { return y(d.cluster); })
             .attr("r", "6")
-            .style("fill", "#69b3a2")
+            .style("fill", function(d) {
+                var colorsArr = ['#c994c7','#fdbb84','#fc8d59','#ef6548','#f7f4f9','#df65b0','#e7298a','#ce1256','#980043','#67001f'];
+                console.log(d.cluster);
+                return colorsArr[d.cluster];
+            })
 
 // // Circles of variable 2
 //         var z = svg.selectAll("circle")
@@ -162,7 +198,7 @@ window.addEventListener("scroll", function () {
     var offsets = document.getElementById('plots').getBoundingClientRect();
     var top = offsets.top;
     // console.log(top);
-    if (top < 200) {
+    if (top < 250) {
         return update('raised_mean', 'Average amount raised per campaign, in dollars');
     }
 });
