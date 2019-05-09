@@ -27,9 +27,8 @@ var y = d3.scaleBand()
 var yAxis = svg.append("g")
   .attr("class", "myYaxis")
 
-var xAxisLabel = xAxis.append('text').attr("class", "text")
 // A function that create / update the plot for a given variable:
-function update(var1) {
+function update(var1, var2) {
   // Parse the Data
   d3.csv("data/med-15-averages-edited.csv", function(data) {
 
@@ -40,10 +39,33 @@ function update(var1) {
     // x.domain(data.map(function(d) { return d.group; }))
     xAxis.transition().duration(1000).call(d3.axisBottom(x))
 
+    // svg.selectAll(".xLabel")  
+   svg.append("text")  
+    .attr("class", "xLabel")           
+    .attr("transform",
+          "translate(" + (width/2) + " ," + 
+                         (height + margin.top + 20) + ")")
+    .style("text-anchor", "middle")
+    .text(var2);
+
+    svg.selectAll(".xLabel").exit().remove();
+    // update lines
+
     // Add Y axis
     // y.domain([0, d3.max(data, function(d) { return +d[selectedVar] }) ]);
     y.domain(data.map(function(d) { return +d.cluster; }))
     yAxis.transition().duration(1000).call(d3.axisLeft(y));
+
+
+    // text label for the y axis
+
+    svg.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin.left)
+    .attr("x",0 - (height / 2))
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .text("Group"); 
 
 //     // Add X axis
 //   var x = d3.scaleLinear()
@@ -139,9 +161,9 @@ function update(var1) {
 window.addEventListener("scroll", function () {
     var offsets = document.getElementById('plots').getBoundingClientRect();
     var top = offsets.top;
-    console.log(top);
+    // console.log(top);
     if (top < 200) {
-        return update('raised_mean');
+        return update('raised_mean', 'Average amount raised per campaign, in dollars');
     }
 });
 
