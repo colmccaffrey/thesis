@@ -51,16 +51,26 @@ d3.csv("data/swarm-terms.csv", type, function(error, data) {
         .extent([[0, 0], [width, height]])
         .x(function(d) { return d.x; })
         .y(function(d) { return d.y; })
-      .polygons(data)).enter().append("g")
-        .on("mouseover", function(d){ d3.select(this).attr("fill", "pink"); })
-        .on("mouseout", function(){ d3.select(this).attr("fill", "black"); });
+        .polygons(data)).enter().append("g");
+        // .on("mouseover", function(d){ d3.select(this).attr("fill", "pink"); })
+        // .on("mouseout", function(){ d3.select(this).attr("fill", "black"); });
+       
 
 
   cell.append("circle")
       .attr("r", function(d) { return (d.data.value * 0.001) * 10 + 3; })
       .attr("cx", function(d) { return d.data.x; })
-      .attr("cy", function(d) { return d.data.y; });
-
+      .attr("cy", function(d) { return d.data.y; })
+      .style("fill", function(d) {
+        var colorsArr = ['#c994c7','#fdbb84','#fc8d59','#ef6548','#f7f4f9','#df65b0','#e7298a','#ce1256','#980043','#67001f'];
+        console.log(d.data.cluster);
+        if (d.data.cluster == 10) {
+            console.log(d.data.cluster, d.data.id);
+            d.data.cluster = 0;
+        }
+        return colorsArr[d.data.cluster];
+        });
+    
   cell.append("path")
       .attr("d", function(d) { return "M" + d.join("L") + "Z"; });
 
@@ -83,8 +93,8 @@ redraw();
 
 window.addEventListener("scroll", function () {
     var pos = document.getElementById('terms-block').getBoundingClientRect();
-    var posBot = pos.top;
-    if (posBot < 900) {
+    var posBot = pos.bottom;
+    if (posBot < 800) {
         var termHeading = document.getElementById('terms-head');
         var introDiv = document.getElementById('intro');
         termHeading.style.opacity = 1;
@@ -94,7 +104,7 @@ window.addEventListener("scroll", function () {
 
     }
     // console.log(posBot);
-    if (posBot < 700) {
+    if (posBot < 750) {
         var termDiv = document.getElementById('terms-block');
         termDiv.style.opacity = 1;
 //         termDiv.style.transition =  opacity 2s ease-in-out;
@@ -104,7 +114,7 @@ window.addEventListener("scroll", function () {
 //        -moz-transition: opacity 2s ease-in;
 //         -ms-transition: opacity 2s ease-in;
 //          -o-transition: opacity 2s ease-in;
-         termDiv.style.transition = "opacity 2s ease-in";
+         termDiv.style.transition = "opacity 1s ease-in";
 
     }
 });
