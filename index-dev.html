@@ -268,14 +268,17 @@ line {
         position: -webkit-sticky;
         position: sticky;
     }
+    #terms-head {
+        opacity: 0;
+    }
     .terms-heading {
         width: 350px;
         margin-left: auto;
         margin-right: auto;
+        margin-top: -300px;
         position: sticky;
         height: 70vh;
         top: 20;
-        opacity: 1;
         -webkit-transition: opacity 2s ease-in-out;
          -webkit-transition: opacity 2s ease-in;
        -moz-transition: opacity 2s ease-in;
@@ -297,8 +300,175 @@ line {
     }
     #terms-block {
         opacity: 0;
+        -webkit-transition: opacity 2s ease-in-out;
+         -webkit-transition: opacity 2s ease-in;
+       -moz-transition: opacity 2s ease-in;
+         -ms-transition: opacity 2s ease-in;         
+          -o-transition: opacity 2s ease-in;
     }
     
+    /* css for stacks */
+ #details {
+  margin-right: 10%;
+  max-width: 250px; 
+  padding: 1rem;
+
+}
+
+.story-scroll {
+  height: auto;
+  max-height: 250px;
+  overflow: auto;
+}
+.col h3 {
+  align-content: center;
+  padding-top: 30px;
+}
+div.chart-title {
+  width: auto;
+  margin-top: 0;
+  margin-left: 0;
+
+}
+.chart-title {
+  color: #c994c7;
+}
+
+#barcode-chart {
+  /* padding: 1rem; */
+}
+.two-col {
+  width: 45%;
+  padding-right: 5%;
+}
+a {
+  color: #212121;
+  opacity: 1;
+}
+.small {
+  text-transform: upperclass;
+  font-size: 11px;
+  font-family: 'Lato', sans-serif;
+  margin-top: .5em;
+  margin-bottom: .5em;
+  font-weight: 200;
+}
+a:hover {
+  color: #df65b0;
+  opacity: 0.8;
+}
+  .y.axis line {
+    fill: none;
+    stroke: #990000;
+    shape-rendering: crispEdges;
+    stroke-width: 1px;
+  } 
+
+  /* .x.axis line {
+    display: none;
+  } */
+
+/* .tick.g-baseline line {
+    stroke: #990000;
+    stroke-dasharray: 0;
+    stroke-width: 2px;
+}  */
+
+  /* .axis text {
+    font-family: sans-serif;
+    font-size: 12px;
+    pointer-events: none;
+    fill: #a6a6a6;
+  }
+
+  .y.axis text {
+    text-anchor: start !important;
+    font-size: 12px;
+    fill: #e6e6e6;
+  } */
+
+  .domain {
+    display: none;
+  }
+
+  /* .line {
+    stroke: #262626;
+    stroke-width: 2px;
+    fill: none;
+  } */
+
+  /* .area {
+    fill: #f2f2f2;
+    opacity: 0.4;
+  }
+
+  .g-label-text {
+    font-family: sans-serif;
+    font-size: 14px;
+  }
+
+  .g-label-circle {
+    fill: #4bc6df;
+  } */
+
+  .micro-content {
+      /* width: 67%; */
+      display: flex;
+  }
+
+  .micro-content div {
+    /* width: 35%;
+    padding-right: 2%; */
+    padding-bottom: 3%;
+    margin-left: 4%;
+   }
+ 
+    /* div.col  {
+      width: 25%;
+      padding: 15px;
+
+    } */
+
+  .col {
+    width: 80%;
+    align-items: center;
+    margin: 1%;
+  }
+
+  
+
+  .mc-kicker {
+    color: #a6a6a6;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin: 0;
+  }
+
+  .bolded {
+    font-weight: 500;
+    color: #262626;
+  }
+
+  .mc-head {
+    color: #262626;
+    font-size: 24px;
+    font-weight: 300;
+    margin: 0 0 10px 0;
+  }
+
+  div.tooltip {   
+      position: absolute;           
+      text-align: left;                                       
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      pointer-events: none;   
+      color: #a6a6a6;  
+  } 
+      
+  .axis--y path {
+    display: none;
+  }
+
 </style>
 		
 </head>
@@ -315,9 +485,10 @@ line {
 
         <!-- intro -->
         <div class="content-1 center">
-            <div class="display">
+            <div id="intro" class="display">
                 <h1>The Sum of Us</h1>
                 <h3> What can crowdfunding tell us about the gaps in the American healthcare system?</h3>
+                <p>As of April 2019, health expenses account for 17.9% of the U.S. GDP, the highest of developed countries in the world. Medical costs are number 1 cause of bankruptcy in U.S. and  federal study conducted in December 2018 shows that 40% of American households can’t afford a $400 financial emergency. The average amount raised per campaign is is $10, 965 compared to what the U.S government pays on healthcare per individual, $8, 234.</p>
             </div>
         </div>
 
@@ -329,10 +500,10 @@ line {
                 </div>
             <!-- </div> -->
             <div class="content-1 center">
-                    <div class="sticky terms-heading">
+                    <div id="terms-head" class="sticky terms-heading">
                         <h1>Top Terms</h1>
                         <h3>What can crowdfunding tell us about the gaps in the American healthcare system?</h3>
-                   </div> 
+                    </div> 
                      <div id="terms-block" class="align-bottom">
                     <ul> words
                     <li>word</li>
@@ -348,9 +519,9 @@ line {
             <div id="plots" class="section">
                 <div class="content-2-3">
                                 <!-- Add 2 buttons -->
-                    <button onclick="update('raised_mean')">Donations</button>
-                    <button onclick="update('goal_mean')">Goal</button>
-                    <button onclick="update('donors_mean')">Donors</button>
+                    <button onclick="update('raised_mean', 'Average amount raised per campaign, in dollars')">Donations</button>
+                    <button onclick="update('goal_mean', 'Average campiagn fundraising goal, in dollars')">Goal</button>
+                    <button onclick="update('donors_mean', 'Average number of people who contributed to each campaign')">Donors</button>
                     <!-- Create a div where the graph will take place -->
                     <div id="my_dataviz"></div>
                 </div>
@@ -361,6 +532,121 @@ line {
                 </div>
                 </div>
         </section>
+
+        <!-- barcode stacks -->
+        <section>
+            <div class="main">
+                <div class="section">
+                    <div class="content-2-3">
+                    <div class="section-wrap">
+                        <h1>Campaign Success Rates</h1>
+                        <h3>Which groups performed better?</h3>
+                        <p>Since 2013 average national salaries have stagnated while the out of-pocket costs per individual with employer supported healthcare has risen 17.9%, or around $5,893.  For those with a chronic disease? The costs have risen $20,000 on average per individual. Hover over the graphs below to see which campaigns, sorted by topics and terms, raised the most money in the shortest amount of time (success rate), and which had the highest rate of people donating who interacted with the campaign (engagement rate).                      </p>
+                    </div>
+                    </div>
+                </div>
+                <div class="content-1-3 ">
+                <!-- <div class="two-col"> -->
+                </div>
+               <!-- set up microcontent to have unique identifier as well? pass as parameter? -->
+            <div id="barcode-chart">
+                <div class="section">
+                <div class="content-2-3 ">
+                    <div class="micro-content">
+                        <div class="chart-title">
+                        <h3>Group 1</h3>
+                        <p class="small">
+                            cancer<br/>
+                            treatments<br/>
+                            diagnosis<br/>
+                            need<br/>
+                            stage<br/>
+                            recent<br/>
+                            chemotherapy<br/>
+                            know
+    
+                        </p>
+                        </div>
+                        <div class="col" id="g21-chart"></div>
+                        <!-- <div class="col" id="g31-chart"></div> -->
+                        <!-- <div class="col" id="g11-chart"></div> -->
+                    </div>
+                    <div class="micro-content">
+                        <div class="chart-title">
+                        <h3>Group 2</h3>
+                        <p class="small">
+                            heart<br/>
+                            medical<br/>
+                            surgery<br/>
+                            family<br/>
+                            recovery<br/>
+                            work<br/>
+                            time<br/>
+                            home
+                        </p>
+                        </div>
+                        <div class="col" id="g22-chart"></div>
+                        <!-- <div class="col" id="g32-chart"></div> -->
+                        <!-- <div class="col" id="g12-chart"></div> -->
+                    </div>
+                    <div class="micro-content">
+                        <div class="chart-title">
+                        <h3>Group 3</h3>
+                        <p class="small">
+                            medical<br/>
+                            care<br/>
+                            life<br/>
+                            cost<br/>
+                            continue<br/>
+                            need<br/>
+                            family<br/>
+                            hospital
+                        </p>
+                        </div>
+                        <div class="col" id="g23-chart"></div>
+                        <!-- <div class="col" id="g33-chart"></div> -->
+                        <!-- <div class="col" id="g13-chart"></div> -->
+                    </div>
+                    <div class="micro-content">
+                            <div class="chart-title">
+                                <h3>Group 4</h3>
+                                <p class="small">
+                                work<br/>
+                                care<br/>
+                                job<br/>
+                                days<br/>
+                                need<br/>
+                                years<br/>
+                                getting<br/>
+                                medical
+                                </p>
+                            </div>
+                            <div class="col" id="g24-chart"></div>
+                            <!-- <div class="col" id="g34-chart"></div> -->
+                            <!-- <div class="col" id="g14-chart"></div> -->
+                    </div>
+                </div> 
+                        <div class="content-1-3">
+                          <div id="details">
+                          </div>
+                        </div>
+                    </div>  <!-- end chart -->
+                    </div>
+                    </div>   <!-- end section -->
+                </section>
+                <section>
+                    <!-- <div id="subsection2" class="section-wrap"> -->
+                <div class="content-2-3 ">
+                     <div class="section">
+                        <h1>Who's left out?</h1>
+                                <div class="two-col">
+                                  <p>Digital literacy should not be a prerequisite to accessing affordable healthcare, but with more than 1 in 3 campaigns on the GoFundMe platform being for Medical expenses of all kind, it is slowly becoming one.  This is not a sustainable solution for a healthcare substitute, and many are being left out of the conversation particularly due the the stigma of crowdfunding, people with diseases perceived to be “choices”  or “blameworthy” diseases like mental health and addiction or “getting my life together as a single mom with a sick kid”, as compared to “faultless” diseases such as cancer or a genetic disorder. </p>
+                                </div>
+                                <div class="two-col">
+                                    <p> The social element also cannot be ignored, we can in the charts above that the campaigns with higher engagement yield higher success rate, so those without a build in network or community to help promote their campaign are more likely to suffer. “If there’s already a hierarchy of affliction and need in society, then crowdfunding often works to exacerbate it.”</p>
+                                </div>
+                            </div>
+                        </section>
 
         <!-- end all sections -->
         </div>
@@ -388,6 +674,7 @@ line {
         <script src="example_loom_script.js"></script> -->
     <script src="js/terms.js"></script>
     <script src="js/plot-charts.js"></script>
+    <script src="js/stacks.js"></script>
     
 </body>
 </html>

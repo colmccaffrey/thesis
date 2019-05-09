@@ -83,7 +83,16 @@ redraw();
 
 window.addEventListener("scroll", function () {
     var pos = document.getElementById('terms-block').getBoundingClientRect();
-    var posBot = pos.bottom;
+    var posBot = pos.top;
+    if (posBot < 900) {
+        var termHeading = document.getElementById('terms-head');
+        var introDiv = document.getElementById('intro');
+        termHeading.style.opacity = 1;
+        introDiv.style.opacity = 0;
+        introDiv.style.transition = "opacity 1s ease-out";
+        termHeading.style.transition = "opacity 1s ease-in";
+
+    }
     // console.log(posBot);
     if (posBot < 700) {
         var termDiv = document.getElementById('terms-block');
