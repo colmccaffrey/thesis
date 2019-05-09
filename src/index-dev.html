@@ -329,13 +329,14 @@ line {
   padding-top: 30px;
 }
 div.chart-title {
-  width: auto;
+  width: 50px;
   margin-top: 0;
   margin-left: 0;
 
 }
 .chart-title {
-  color: #c994c7;
+  color: rgb(152, 0, 67);
+
 }
 
 #barcode-chart {
@@ -480,6 +481,13 @@ a:hover {
     display: none;
   }
 
+  .terms-display {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 200;
+
+  }
+
 </style>
 		
 </head>
@@ -516,11 +524,13 @@ a:hover {
                         <h3>What can crowdfunding tell us about the gaps in the American healthcare system?</h3>
                     </div> 
                      <div id="terms-block" class="align-bottom">
-                    <ul> words
-                    <li>word</li>
-                    <li>word</li>
-                    <li>word</li>
-                    </ul>
+                     <div class="center">
+                        <p class="terms-display">Help 4386</p>
+                        <p class="terms-display">Family 2524</p>
+                        <p class="terms-display">Time 2143</p>
+                        <p class="terms-display">Work 2021</p>
+                        <p class="terms-display">Breast 2001</p>
+                    </div>
                 </div> 
             </div>
         </section>
@@ -530,9 +540,9 @@ a:hover {
             <div id="plots" class="section">
                 <div class="content-2-3">
                                 <!-- Add 2 buttons -->
-                    <button onclick="update('raised_mean', 'Average amount raised per campaign, in dollars')">Donations</button>
-                    <button onclick="update('goal_mean', 'Average campiagn fundraising goal, in dollars')">Goal</button>
-                    <button onclick="update('donors_mean', 'Average number of people who contributed to each campaign')">Donors</button>
+                    <button onclick="update('raised_mean', 'Average amount raised per campaign, in dollars', 'The average amount raised per campaign is $5,449. The campaigns that raised the most had top terms: cancer, treatment, surgery, work, expenses')">Donations</button>
+                    <button onclick="update('goal_mean', 'Average campiagn fundraising goal, in dollars', 'The average campaign fundraising goal ranged from 10k-20k, with campaigns fundraising for top terms heart, liver, doctor, bills, hospital, chmotherapy, cancer, and family being the highest')">Goal</button>
+                    <button onclick="update('donors_mean', 'Average number of people who contributed to each campaign', 'The average amount of donors per campaign across all groups was 56, with an average donation of $97')">Donors</button>
                     <!-- Create a div where the graph will take place -->
                     <div id="my_dataviz"></div>
                 </div>
@@ -565,18 +575,14 @@ a:hover {
                 <div class="content-2-3 ">
                     <div class="micro-content">
                         <div class="chart-title">
-                        <h3>Group 1</h3>
+                        <!-- <h3>Group 1</h3> -->
                         <p class="small">
-                            cancer<br/>
-                            treatments<br/>
-                            diagnosis<br/>
-                            need<br/>
-                            stage<br/>
-                            recent<br/>
-                            chemotherapy<br/>
-                            know
-    
-                        </p>
+                                <p class="small">
+                                        work<br/>
+                                        help<br/>
+                                        time<br/>
+                                        back
+                                    </p>
                         </div>
                         <div class="col" id="g21-chart"></div>
                         <!-- <div class="col" id="g31-chart"></div> -->
@@ -584,17 +590,14 @@ a:hover {
                     </div>
                     <div class="micro-content">
                         <div class="chart-title">
-                        <h3>Group 2</h3>
+                        <!-- <h3>Group 2</h3> -->
                         <p class="small">
-                            heart<br/>
-                            medical<br/>
-                            surgery<br/>
-                            family<br/>
-                            recovery<br/>
-                            work<br/>
-                            time<br/>
-                            home
-                        </p>
+                                cancer<br/>
+                                treatments<br/>
+                                breats<br/>
+                                diagnosed
+                                
+                            </p>
                         </div>
                         <div class="col" id="g22-chart"></div>
                         <!-- <div class="col" id="g32-chart"></div> -->
@@ -602,17 +605,13 @@ a:hover {
                     </div>
                     <div class="micro-content">
                         <div class="chart-title">
-                        <h3>Group 3</h3>
+                        <!-- <h3>Group 3</h3> -->
                         <p class="small">
-                            medical<br/>
-                            care<br/>
-                            life<br/>
-                            cost<br/>
-                            continue<br/>
-                            need<br/>
-                            family<br/>
-                            hospital
-                        </p>
+                                fire<br/>
+                                home<br/>
+                                family<br/>
+                                lost
+                            </p>
                         </div>
                         <div class="col" id="g23-chart"></div>
                         <!-- <div class="col" id="g33-chart"></div> -->
@@ -620,16 +619,12 @@ a:hover {
                     </div>
                     <div class="micro-content">
                             <div class="chart-title">
-                                <h3>Group 4</h3>
+                                <!-- <h3>Group 4</h3> -->
                                 <p class="small">
-                                work<br/>
-                                care<br/>
-                                job<br/>
-                                days<br/>
-                                need<br/>
-                                years<br/>
-                                getting<br/>
-                                medical
+                                        que<br/>
+                          en<br/>
+                          el<br/>
+                          para
                                 </p>
                             </div>
                             <div class="col" id="g24-chart"></div>
