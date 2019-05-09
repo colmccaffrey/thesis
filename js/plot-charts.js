@@ -28,7 +28,7 @@ var yAxis = svg.append("g")
   .attr("class", "myYaxis")
 
 // A function that create / update the plot for a given variable:
-function update(var1, var2) {
+function update(var1, var2, var3) {
   // Parse the Data
   d3.csv("data/med-15-averages-edited.csv", function(data) {
 
@@ -107,7 +107,7 @@ function update(var1, var2) {
       .attr("y2", function(d) { return y(d.cluster); })
       .attr("stroke", "grey")
       .attr("stroke-width", "1px")
-
+    
       var xL = svg.selectAll(".xLabel")
       .data(data)
     // update lines
@@ -139,7 +139,30 @@ function update(var1, var2) {
   
     //   svg.selectAll(".xLabel").exit().remove()
 
-
+    var plotInfo = d3.select("#plot-information")
+      .data(data)
+    // update lines
+    plotInfo
+      .enter()
+      .append("text")
+    //   .attr("class", "pInfo")
+      .merge(plotInfo)
+      .transition()
+    //   .duration(1000)
+        // .attr("x1", function(d) { console.log(x(d[selectedd[var1]])) ; return x(d[selectedd[var1]]); })
+        // .attr("x2", function(d) { return x(d[selectedd[var1]]); })
+        // .attr("y1", y(0))
+        // .attr("y2", function(d) { return y(d.cluster); })
+        // .attr("stroke", "grey")
+    //   .attr("x1", x(0))
+    //   .attr("x2", function(d) { return x(d[var1]); })
+    //   .attr("y1", function(d) { return y(d.cluster); })
+    //   .attr("y2", function(d) { return y(d.cluster); })
+    //   .attr("stroke", "grey")
+    //   .attr("stroke-width", "1px")
+    //   svg.append("text")  
+    //   .attr("class", "xLabel")           
+      .text(var3);
 
     // variable u: map data to existing circle
     var u = svg.selectAll("circle")
@@ -199,7 +222,7 @@ window.addEventListener("scroll", function () {
     var top = offsets.top;
     // console.log(top);
     if (top < 250) {
-        return update('raised_mean', 'Average amount raised per campaign, in dollars');
+        return update('raised_mean', 'Average amount raised per campaign, in dollars', 'The average amount raised per campaign is $5,449. The campaigns that raised the most had top terms: cancer, treatment, surgery, work, expenses');
     }
 });
 
