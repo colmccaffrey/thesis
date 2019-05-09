@@ -81,5 +81,21 @@ redraw();
 //     clearOld.selectAll("svg").remove();
 // }
 
-window.addEventListener("resize", redraw);
+window.addEventListener("scroll", function () {
+    var pos = document.getElementById('terms-block').getBoundingClientRect();
+    var posBot = pos.bottom;
+    // console.log(posBot);
+    if (posBot < 700) {
+        var termDiv = document.getElementById('terms-block');
+        termDiv.style.opacity = 1;
+//         termDiv.style.transition =  opacity 2s ease-in-out;
+//         termDiv.style. -moz-transition: opacity 2s ease-in-out;
+//    -webkit-transition: opacity 2s ease-in-out;
+//         -webkit-transition: opacity 2s ease-in;
+//        -moz-transition: opacity 2s ease-in;
+//         -ms-transition: opacity 2s ease-in;
+//          -o-transition: opacity 2s ease-in;
+         termDiv.style.transition = "opacity 2s ease-in";
 
+    }
+});
