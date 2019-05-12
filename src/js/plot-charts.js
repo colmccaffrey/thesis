@@ -290,16 +290,16 @@ function update(var1, var2, varA, var3, pre) {
 }
 
 // Initialize plot
-// update('raised_mean', 'donors_mean');
+update('raised_mean','average across all groups $5,449','5449','The average amount raised per campaign is $5,449. The campaigns that raised the most had top terms: cancer, treatment, surgery, work, expenses','$');
 
 // run function on scroll position
-window.addEventListener("scroll", function () {
-    var offsets = document.getElementById('plots').getBoundingClientRect();
-    var top = offsets.top;
-    if (top < 250) {
-        return update('raised_mean','average across all groups $5,449','5449','The average amount raised per campaign is $5,449. The campaigns that raised the most had top terms: cancer, treatment, surgery, work, expenses','$');
-    }
-});
+// window.addEventListener("scroll", function () {
+//     var offsets = document.getElementById('plots').getBoundingClientRect();
+//     var top = offsets.top;
+//     if (top < 250) {
+//         return update('raised_mean','average across all groups $5,449','5449','The average amount raised per campaign is $5,449. The campaigns that raised the most had top terms: cancer, treatment, surgery, work, expenses','$');
+//     }
+// });
 
 
 
