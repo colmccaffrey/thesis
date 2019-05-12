@@ -173,7 +173,7 @@ line {
 .container {
     width: 100%; 
     margin: 0 auto;
-    height: auto;
+    height: 100%;
     margin: 0;
     /* position: absolute;
     top: 0;
@@ -271,6 +271,7 @@ line {
     .sticky {
         position: -webkit-sticky;
         position: sticky;
+        top: 0;
     }
     #terms-head {
         opacity: 0;
@@ -509,13 +510,32 @@ button.plotlabel.active {
 
 .circle-label {
 }
-   
+.full-height {
+    width: 100%;
+    height: 100vh;
+}
 
 </style>
 		
 </head>
 <body>
     <div class="container">
+    <div class="full-height">
+        <h1>test 1</h1>
+    </div>
+    <div class="full-height">
+            <div class="sticky">
+            <h1>Test 2</h1>
+            </div>
+            <div style="height: 2000px; position: relative;">
+                this should scroll
+                <p>this should be last before div moves on</p>
+            </div>
+    </div>
+    <div class="full-height">
+        <h1>Test 3</h1>
+    </div>
+       
         <!-- <div class="section"> -->
             <!-- <div id="hero" class="content-1 center">
                 <div class="display">
@@ -525,14 +545,14 @@ button.plotlabel.active {
             </div> -->
         <!-- </div> -->
 
-        <!-- intro -->
-        <div class="content-1 center">
+        <!-- old intro -->
+        <!-- <div class="content-1 center">
             <div id="intro" class="display">
                 <h1>The Sum of Us</h1>
                 <h3> What can crowdfunding tell us about the gaps in the American healthcare system?</h3>
                 <p>As of April 2019, health expenses account for 17.9% of the U.S. GDP, the highest of developed countries in the world. Medical costs are number 1 cause of bankruptcy in U.S. and  federal study conducted in December 2018 shows that 40% of American households can’t afford a $400 financial emergency. The average amount raised per campaign is is $10, 965 compared to what the U.S government pays on healthcare per individual, $8, 234.</p>
             </div>
-        </div>
+        </div> -->
 
         <!-- shows term count -->
         <section>
