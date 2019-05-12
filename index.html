@@ -487,6 +487,29 @@ a:hover {
     font-weight: 200;
 
   }
+  button.plotlabel {
+  background-color: purple; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  opacity: 1;  
+  }
+
+button.plotlabel:hover {
+  opacity: .7;  
+}
+button.plotlabel.active {
+  background-color: hotpink;
+  opacity: 1;  
+}
+
+.circle-label {
+}
+   
 
 </style>
 		
@@ -538,11 +561,11 @@ a:hover {
         <!-- plot charts -->
         <section>
             <div id="plots" class="section">
-                <div class="content-2-3">
+                <div id="plots-nav" class="content-2-3">
                                 <!-- Add 2 buttons -->
-                    <button onclick="update('raised_mean', 'Average amount raised per campaign, in dollars', 'The average amount raised per campaign is $5,449. The campaigns that raised the most had top terms: cancer, treatment, surgery, work, expenses')">Donations</button>
-                    <button onclick="update('goal_mean', 'Average campiagn fundraising goal, in dollars', 'The average campaign fundraising goal ranged from 10k-20k, with campaigns fundraising for top terms heart, liver, doctor, bills, hospital, chmotherapy, cancer, and family being the highest')">Goal</button>
-                    <button onclick="update('donors_mean', 'Average number of people who contributed to each campaign', 'The average amount of donors per campaign across all groups was 56, with an average donation of $97')">Donors</button>
+                    <button class="plotlabel active" onclick="update('raised_mean', 'average across all groups $5,449','5449','The average amount raised per campaign is $5,449. The campaigns that raised the most had top terms: cancer, treatment, surgery, work, expenses','$')">Average Amount Raised</button>
+                    <button class="plotlabel" onclick="update('goal_mean', 'average across all groups $15,144','15144', 'The average campaign fundraising goal ranged from 10k-20k, with campaigns fundraising for top terms heart, liver, doctor, bills, hospital, chmotherapy, cancer, and family being the highest','$')">Average Fundraising Goal</button>
+                    <button class="plotlabel" onclick="update('donors_mean', 'average across all groups 56','56','The average amount of donors per campaign across all groups was 56, with an average donation of $97','')">Average Number of Donors</button>
                     <!-- Create a div where the graph will take place -->
                     <div id="my_dataviz"></div>
                 </div>
@@ -681,6 +704,21 @@ a:hover {
     <script src="js/terms.js"></script>
     <script src="js/plot-charts.js"></script>
     <script src="js/stacks.js"></script>
+    <script>
+    var btnContainer = document.getElementById("plots-nav");
+
+        // Get all buttons with class="btn" inside the container
+        var btns = btnContainer.getElementsByClassName("plotlabel");
+
+        // Loop through the buttons and add the active class to the current/clicked button
+        for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+        }
+    </script>
     
 </body>
 </html>

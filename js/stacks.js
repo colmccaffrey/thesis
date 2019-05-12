@@ -1,7 +1,7 @@
   //Margin conventions
  //Loads the data
 
- const clusterNum = 4;
+ const clusterNum = 3;
  // const cats = ["cluster", "donors", "raised", "shares", "goal"]
  
      
@@ -13,24 +13,36 @@
      if (err) throw "error loading data";
      //FORMAT data
      data.forEach(function(d) {
-       d.cluster = +d.cluster
+       d.cluster = group(+d.cluster)
        d.donors = +d.donors
        d.shares = +d.shares
        d.engagement = +d.engagement
        d.success = +d.success
        d.raised = +d.raised
        d.goal = +d.goal
-       d.theme = getTheme(d.cluster)
+    //    d.theme = getTheme(d.cluster)
+        console.log("check cluster" + d.cluster);
      })
-     function getTheme(clusterNum) {
-       if (clusterNum == 0) {
-       return 0;
-       }
-     }
+    function group(cluster) {
+        var group;
+        if (cluster == 0 || cluster == 7 || cluster == 8  ) {
+            // console.log("cluster" + cluster);
+            group = 1;
+            return group;
+        } if (cluster == 1 || cluster == 4 || cluster == 6 || cluster == 9 ) {
+            group = 2;
+            return group;
+        } else {
+            group = 3;
+        return group;
+        }
+
+    }
+
      for (var i = 1; i <=clusterNum; i++) {
-         var cleanData = data.filter(function(d) { 
-           return d.cluster == i - 1
-         })
+        var cleanData = data.filter(function(d) { 
+            return d.cluster == i;
+          })
          draw("#g2"  + i + "-chart", "success", i, cleanData);
          // draw("#g1" + i + "-chart", "engagement", i, cleanData );
          // draw("#g3" + i + "-chart", "shares", i, cleanData);
@@ -146,7 +158,7 @@
    
          div.transition(300)
            .style("opacity", 1)
-         div.html('<p class="small">' + d.title + ' </p><p>' + d[col] + '% ' + col);
+         div.html('<p class="small">' + d.cluster + d.title + ' </p><p>' + d[col] + '% ' + col);
          
          //   var offset = top ? div.node().offsetHeight + 1 : -1;
          var offset = this.y;
