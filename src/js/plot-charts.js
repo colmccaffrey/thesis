@@ -28,13 +28,37 @@ var yAxis = svg.append("g")
   .attr("class", "myYaxis")
 
 // A function that create / update the plot for a given variable:
-function update(var1, var2, var3) {
+function update(var1, var2, varA, var3, pre) {
   // Parse the Data
   d3.csv("data/med-15-averages-edited.csv", function(data) {
+//   d3.csv("data/group-averages-edited.csv", function(data) {
+
+    // data.forEach(function(d) {
+    //     d.cluster = group(+d.cluster)
+    // })
+
+    // function group(cluster) {
+    //     var group;
+    //     if (cluster == 0 || cluster == 7 || cluster == 8  ) {
+    //         // console.log("cluster" + cluster);
+    //         group = 1;
+    //         return group;
+    //     } if (cluster == 1 || cluster == 4 || cluster == 6 || cluster == 9 ) {
+    //         group = 2;
+    //         return group;
+    //     } else {
+    //         group = 3;
+    //     return group;
+    //     }
+
+    // }
 
 
     // / X axis
-    x.domain([0, d3.max(data, function(d) { return +d[var1] }) ]);
+    var min = d3.min(data, function(d) { return +d[var1] });
+
+    x.domain([0, d3.max(data, function(d) { return +d[var1]}) * 2.5 - min * 2.5 ]);
+    // x.domain([0, d3.max(data, function(d) { return +d[var1] * 1.5 }) ]);
     // x.domain([0, 200]);
     // x.domain(data.map(function(d) { return d.group; }))
     xAxis.transition().duration(1000).call(d3.axisBottom(x))
@@ -108,7 +132,7 @@ function update(var1, var2, var3) {
       .attr("stroke", "grey")
       .attr("stroke-width", "1px")
     
-      var xL = svg.selectAll(".xLabel")
+    var xL = svg.selectAll(".xLabel")
       .data(data)
     // update lines
     xL
@@ -116,7 +140,6 @@ function update(var1, var2, var3) {
       .append("text")
       .attr("class", "xLabel")
       .merge(xL)
-      .transition()
     //   .duration(1000)
         // .attr("x1", function(d) { console.log(x(d[selectedd[var1]])) ; return x(d[selectedd[var1]]); })
         // .attr("x2", function(d) { return x(d[selectedd[var1]]); })
@@ -139,16 +162,16 @@ function update(var1, var2, var3) {
   
     //   svg.selectAll(".xLabel").exit().remove()
 
-    var plotInfo = d3.select("#plot-information")
+    var plotInfo = d3.select(".plot-information")
       .data(data)
     // update lines
     plotInfo
       .enter()
       .append("text")
-    //   .attr("class", "pInfo")
+      .attr("class", "plot-information")
       .merge(plotInfo)
       .transition()
-    //   .duration(1000)
+      .duration(1000)
         // .attr("x1", function(d) { console.log(x(d[selectedd[var1]])) ; return x(d[selectedd[var1]]); })
         // .attr("x2", function(d) { return x(d[selectedd[var1]]); })
         // .attr("y1", y(0))
@@ -165,15 +188,17 @@ function update(var1, var2, var3) {
       .text(var3);
 
     // variable u: map data to existing circle
-    var u = svg.selectAll("circle")
+    var bL = svg.selectAll(".circle-label")
       .data(data)
     // update bars
-    u
+    bL
       .enter()
-      .append("circle")
-      .merge(u)
+      .append("text")
+      .attr("class", "circle-label")
+      .merge(bL)
       .transition()
       .duration(1000)
+
     //     .attr("cx", function(d) { return x(d[selectedd[var1]]); })
     //     .attr("cy", function(d) { return y(d.cluster); })
     //     .attr("r", 8)
@@ -183,14 +208,65 @@ function update(var1, var2, var3) {
          // Circles of variable 1
         // .enter()
         // .append("circle")
-            .attr("cx", function(d) { return x(d[var1]); })
-            .attr("cy", function(d) { return y(d.cluster); })
-            .attr("r", "6")
-            .style("fill", function(d) {
-                var colorsArr = ['#c994c7','#fdbb84','#fc8d59','#ef6548','#f7f4f9','#df65b0','#e7298a','#ce1256','#980043','#67001f'];
-                console.log(d.cluster);
+            .text(function(d) {
+                return pre + d[var1];
+            })
+            .attr("x", function(d) { return x(d[var1] * 1.1); })
+            .attr("y", function(d) { return y(d.cluster); })
+            .style("font-size", 12)
+            .style("color", function(d) {
+                // var colorsArr = ['#c994c7','#fdbb84','#fc8d59','#ef6548','#f7f4f9','#df65b0','#e7298a','#ce1256','#980043','#67001f'];
+                var colorsArr = ['#c994c7','#fc8d59','#67001f'];                
+                // console.log(d.cluster);
                 return colorsArr[d.cluster];
             })
+
+    var v = svg.selectAll(".averageLine")
+        .data(data)
+        // update bars
+        v
+        .enter()
+        .append("line")
+        .attr("class", "averageLine")
+        .merge(v)
+        .transition()
+        .duration(1000)
+        .attr("x1", x(varA))
+        .attr("x2", x(varA))
+        .attr("y1", y(0)+ 70)
+        .attr("y2", y(10))
+        .attr("stroke", "#cdcdcd")
+        .attr("stroke-width", "1px")
+        .attr("stroke-dasharray", 2)
+
+        var u = svg.selectAll("circle")
+            .data(data)
+        // update bars
+        u
+            .enter()
+            .append("circle")
+            .merge(u)
+            .transition()
+            .duration(1000)
+        //     .attr("cx", function(d) { return x(d[selectedd[var1]]); })
+        //     .attr("cy", function(d) { return y(d.cluster); })
+        //     .attr("r", 8)
+        //     .attr("fill", "#69b3a2");
+    
+    
+                // Circles of variable 1
+            // .enter()
+            // .append("circle")
+                .attr("cx", function(d) { return x(d[var1]); })
+                .attr("cy", function(d) { return y(d.cluster); })
+                .attr("r", "6")
+                .style("fill", function(d) {
+                    // var colorsArr = ['#c994c7','#fdbb84','#fc8d59','#ef6548','#f7f4f9','#df65b0','#e7298a','#ce1256','#980043','#67001f'];
+                    var colorsArr = ['#c994c7','#fc8d59','#67001f'];                
+                    // console.log(d.cluster);
+                    return colorsArr[d.cluster];
+                })
+
 
 // // Circles of variable 2
 //         var z = svg.selectAll("circle")
@@ -220,11 +296,12 @@ function update(var1, var2, var3) {
 window.addEventListener("scroll", function () {
     var offsets = document.getElementById('plots').getBoundingClientRect();
     var top = offsets.top;
-    // console.log(top);
     if (top < 250) {
-        return update('raised_mean', 'Average amount raised per campaign, in dollars', 'The average amount raised per campaign is $5,449. The campaigns that raised the most had top terms: cancer, treatment, surgery, work, expenses');
+        return update('raised_mean','average across all groups $5,449','5449','The average amount raised per campaign is $5,449. The campaigns that raised the most had top terms: cancer, treatment, surgery, work, expenses','$');
     }
 });
+
+
 
 // // set the dimensions and margins of the graph
 // var margin = {top: 10, right: 30, bottom: 30, left: 30},
