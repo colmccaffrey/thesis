@@ -21,7 +21,7 @@
        d.raised = +d.raised
        d.goal = +d.goal
     //    d.theme = getTheme(d.cluster)
-        console.log("check cluster" + d.cluster);
+        // console.log("check cluster" + d.cluster);
      })
     function group(cluster) {
         var group;

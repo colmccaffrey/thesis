@@ -21,7 +21,7 @@
         <!-- <script src="string.js"></script> -->
 <style>
 html, body {
-    overflow: visible;
+    /* overflow: visible; */
     font-family: 'Lato', sans-serif;
     font-size: 1.2rem;
     /* fill: #b9b9b9; */
@@ -170,8 +170,9 @@ line {
 } */
 
 /* app layout */
-.container {
-    width: 100%; 
+.container { 
+    width: 100%;
+    width: 100vw;
     margin: 0 auto;
     height: 100%;
     margin: 0;
@@ -187,6 +188,7 @@ line {
     display: flex;
     flex-wrap: nowrap;
     overflow: visible;
+    height: 100%;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -300,8 +302,7 @@ line {
 
     }
     section {
-        overflow: visible;
-        margin-bottom: 15%;
+        height: 100%;
     }
     #terms-block {
         opacity: 0;
@@ -511,7 +512,6 @@ button.plotlabel.active {
 .circle-label {
 }
 .full-height {
-    width: 100%;
     height: 100vh;
 }
 
@@ -519,31 +519,73 @@ button.plotlabel.active {
 		
 </head>
 <body>
-    <div class="container">
-    <div class="full-height">
-        <h1>test 1</h1>
-    </div>
-    <div class="full-height">
-            <div class="sticky">
-            <h1>Test 2</h1>
+
+    <!-- dont delete- example working sticky scroll!!!! -->
+    <!-- KEEEEPPPPPP -->
+        <!-- <div class="container">
+        <div class="full-height">
+            <h1>test 1</h1>
+        </div>
+        <div class="full-height">
+                <div class="sticky">
+                <h1>Test 2</h1>
+                </div>
+                <div style="height: 2000px; position: relative;">
+                    this should scroll
+                    <p>this should be last before div moves on</p>
+                </div>
+        </div>
+        <div class="full-height">
+            <h1>Test 3</h1>
+        </div> -->
+       <!-- dont delete above code - working sticky scroll example -->
+       <!-- KEEEEPPPP -->
+    <div class= "container">
+        <div class="full-height">
+            <div class="section">
+                <div class="content-2-3">
+                    <div id="radiusGraph" style="width: 100%; height: 1000px;">
+                            <div class="heading" style="width: 300px; text-align: center; position: absolute; top: 225px; left: 300px">
+                                <h1>The Sum of Us</h1>
+                                <h2>What can crowdfunding tell us about the U.S. healthcare gap?</h2>
+                            </div>
+                        <!-- <button onclick="update(nodeRadiusCluster)">Enter</button>
+                        <button onclick="drop()">Drop</button> -->
+                    <!-- <svg width="600" height="600" viewBox="-480 -250 960 600">
+                        <circle r="100" stroke="brown" stroke-opacity="0.5" fill="none"></circle>
+                        <circle r="200" stroke="steelblue" stroke-opacity="0.5" fill="none"></circle>
+                    </svg> -->
+                    <!-- <button oncllick="update(nodeRadiusAll)">onLoad layout</button> -->
+                    <!-- end radius graph -->
+                    </div> 
+                    <!-- end 2-3 cols -->
+                </div>
+            <div class="content-1-3">
+                <div id="subtitle" style="position: relative; height: 3000px;">
+                <ul>
+                    <li class="cluster1">Help</li>
+                    <li class="cluster2">Family </li>
+                    <li class="cluster3"> Work</li>
+                    <li class="cluster4">Surgery</li>
+                    </ul>
+                    <!-- end subtitle -->
+                </div>
+                <!-- end content 1-3 -->
             </div>
-            <div style="height: 2000px; position: relative;">
-                this should scroll
-                <p>this should be last before div moves on</p>
-            </div>
-    </div>
-    <div class="full-height">
-        <h1>Test 3</h1>
-    </div>
-       
-        <!-- <div class="section"> -->
+            <!-- end class section -->
+        </div>
+        <!-- end fullheight div -->
+     </div>
+
+         <!-- old not useful?  -->
+       <!-- <div class="section"> -->
             <!-- <div id="hero" class="content-1 center">
                 <div class="display">
                     <h1>The Sum of Us</h1>
                     <h3> What can crowdfunding tell us about the gaps in the American healthcare system?</h3>
                 </div>
-            </div> -->
-        <!-- </div> -->
+            </div> 
+        </div> -->
 
         <!-- old intro -->
         <!-- <div class="content-1 center">
@@ -553,14 +595,14 @@ button.plotlabel.active {
                 <p>As of April 2019, health expenses account for 17.9% of the U.S. GDP, the highest of developed countries in the world. Medical costs are number 1 cause of bankruptcy in U.S. and  federal study conducted in December 2018 shows that 40% of American households can’t afford a $400 financial emergency. The average amount raised per campaign is is $10, 965 compared to what the U.S government pays on healthcare per individual, $8, 234.</p>
             </div>
         </div> -->
+        <!-- end old intro -->
 
+
+        <!-- OLD - remove after -->
         <!-- shows term count -->
-        <section>
-            <!-- <div class="chart-container-full"> -->
+        <!-- <section>
                 <div class="sticky" id="term-swarm">
-                    <!-- <svg width="900" height="600"></svg> -->
                 </div>
-            <!-- </div> -->
             <div class="content-1 center">
                     <div id="terms-head" class="sticky terms-heading">
                         <h1>Top Terms</h1>
@@ -576,27 +618,34 @@ button.plotlabel.active {
                     </div>
                 </div> 
             </div>
-        </section>
+        </section> -->
+         <!-- end old - remove after -->
 
         <!-- plot charts -->
-        <section>
+        <!-- behin full height div -->
+    <div class="full-height">
+        <!-- <section> -->
             <div id="plots" class="section">
-                <div id="plots-nav" class="content-2-3">
-                                <!-- Add 2 buttons -->
-                    <button class="plotlabel active" onclick="update('raised_mean', 'average across all groups $5,449','5449','The average amount raised per campaign is $5,449. The campaigns that raised the most had top terms: cancer, treatment, surgery, work, expenses','$')">Average Amount Raised</button>
-                    <button class="plotlabel" onclick="update('goal_mean', 'average across all groups $15,144','15144', 'The average campaign fundraising goal ranged from 10k-20k, with campaigns fundraising for top terms heart, liver, doctor, bills, hospital, chmotherapy, cancer, and family being the highest','$')">Average Fundraising Goal</button>
-                    <button class="plotlabel" onclick="update('donors_mean', 'average across all groups 56','56','The average amount of donors per campaign across all groups was 56, with an average donation of $97','')">Average Number of Donors</button>
-                    <!-- Create a div where the graph will take place -->
-                    <div id="my_dataviz"></div>
-                </div>
+                    <div id="plots-nav" class="content-2-3">
+                        <!-- Add filter buttons -->
+                        <button class="plotlabel active" onclick="update('raised_mean', 'average across all groups $5,449','5449','The average amount raised per campaign is $5,449. The campaigns that raised the most had top terms: cancer, treatment, surgery, work, expenses','$')">Average Amount Raised</button>
+                        <button class="plotlabel" onclick="update('goal_mean', 'average across all groups $15,144','15144', 'The average campaign fundraising goal ranged from 10k-20k, with campaigns fundraising for top terms heart, liver, doctor, bills, hospital, chmotherapy, cancer, and family being the highest','$')">Average Fundraising Goal</button>
+                        <button class="plotlabel" onclick="update('donors_mean', 'average across all groups 56','56','The average amount of donors per campaign across all groups was 56, with an average donation of $97','')">Average Number of Donors</button>
+                        <!-- Create a div where the graph will take place -->
+                        <div id="plots-chart"></div>
+                    </div>
                 <div class="content-1-3">
                         <h1>Group Comparisons</h1>
                         <h3>Exploring the campiagns by group shows us patterns of needs as well as who is contributing to what, and maybe more importanly, which campaigns are struggling the most.</h3>
-                        <p id="plot-information">Text goes here on update of chart</p>
+                        <p class="plot-information">Text goes here on update of chart</p>
                 </div>
-                </div>
-        </section>
-
+                <!-- end plots class section -->
+            </div>
+        <!-- </section> -->
+        <!-- end full height div -->
+        </div>
+        <!-- begin full height div -->
+        <div class="full-height">
         <!-- barcode stacks -->
         <section>
             <div class="main">
@@ -679,24 +728,28 @@ button.plotlabel.active {
                           <div id="details">
                           </div>
                         </div>
-                    </div>  <!-- end chart -->
-                    </div>
-                    </div>   <!-- end section -->
-                </section>
-                <section>
+                </div>  <!-- end chart -->
+                </div>
+                </div>   <!-- end section -->
+            </section>
+        <!-- end full height div -->
+        </div> 
+        <div class="full-height">
+            <section>
                     <!-- <div id="subsection2" class="section-wrap"> -->
                 <div class="content-2-3 ">
-                     <div class="section">
+                    <div class="section">
                         <h1>Who's left out?</h1>
-                                <div class="two-col">
-                                  <p>Digital literacy should not be a prerequisite to accessing affordable healthcare, but with more than 1 in 3 campaigns on the GoFundMe platform being for Medical expenses of all kind, it is slowly becoming one.  This is not a sustainable solution for a healthcare substitute, and many are being left out of the conversation particularly due the the stigma of crowdfunding, people with diseases perceived to be “choices”  or “blameworthy” diseases like mental health and addiction or “getting my life together as a single mom with a sick kid”, as compared to “faultless” diseases such as cancer or a genetic disorder. </p>
-                                </div>
-                                <div class="two-col">
-                                    <p> The social element also cannot be ignored, we can in the charts above that the campaigns with higher engagement yield higher success rate, so those without a build in network or community to help promote their campaign are more likely to suffer. “If there’s already a hierarchy of affliction and need in society, then crowdfunding often works to exacerbate it.”</p>
-                                </div>
-                            </div>
-                        </section>
-
+                    <div class="two-col">
+                        <p>Digital literacy should not be a prerequisite to accessing affordable healthcare, but with more than 1 in 3 campaigns on the GoFundMe platform being for Medical expenses of all kind, it is slowly becoming one.  This is not a sustainable solution for a healthcare substitute, and many are being left out of the conversation particularly due the the stigma of crowdfunding, people with diseases perceived to be “choices”  or “blameworthy” diseases like mental health and addiction or “getting my life together as a single mom with a sick kid”, as compared to “faultless” diseases such as cancer or a genetic disorder. </p>
+                    </div>
+                    <div class="two-col">
+                        <p> The social element also cannot be ignored, we can in the charts above that the campaigns with higher engagement yield higher success rate, so those without a build in network or community to help promote their campaign are more likely to suffer. “If there’s already a hierarchy of affliction and need in society, then crowdfunding often works to exacerbate it.”</p>
+                    </div>
+                </div>
+            </section>
+        <!-- end full height div -->
+        </div>
         <!-- end all sections -->
         </div>
             <!-- <div class="content-1-3"> -->
@@ -721,9 +774,13 @@ button.plotlabel.active {
             </div>
         </div>
         <script src="example_loom_script.js"></script> -->
-    <script src="js/terms.js"></script>
+
+    <!-- can remove terms.js -->
+    <!-- <script src="js/terms.js"></script> -->
     <script src="js/plot-charts.js"></script>
     <script src="js/stacks.js"></script>
+    <script src="js/radial.js"></script>
+
     <script>
     var btnContainer = document.getElementById("plots-nav");
 
