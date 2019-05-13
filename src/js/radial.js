@@ -106,6 +106,9 @@ function update(nodeRadius) {
           .attr("fill", function(d) {  return colorArr[d.type]; })
           .attr("r", 3.5)
           .attr("opacity", 1);
+        // d3.select("#terms-list")
+        //     .transition()
+        //     .duration(150)
          
     }
     
@@ -116,10 +119,8 @@ function update(nodeRadius) {
         .attr("opacity", 1)
         .attr("r", 2.5)
     }
-
     
 }
-
 
 // function drop() {
 //   var node = d3.select("svg")
@@ -140,12 +141,12 @@ radialLoad("all");
 var called = false;
 
 window.addEventListener("scroll", function () {
-    var offsets = document.getElementById('subtitle').getBoundingClientRect();
+    var offsets = document.getElementById('radialTrigger1').getBoundingClientRect();
     var top = offsets.top;
     // var bottom = offsets.bottom;
     console.log(called);
     if (!called) {
-        if (top < -200) {
+        if (top < 400) {
         called = !called;
         return radialLoad("cluster");
       }

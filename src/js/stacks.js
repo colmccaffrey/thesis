@@ -174,7 +174,8 @@
        //on click to show campaign details
        .on("click", function(d, i){
            var topY = d3.event.pageY;
-           var detailsPadding = topY - 100 +  "px";
+        //    var detailsPadding = topY - 100 +  "px";
+        detailsPadding = 200 + "px";
            console.log("padding" + detailsPadding);
            var detailsBox = d3.select("#details")
                console.log(d);
