@@ -129,12 +129,12 @@
        .style("stroke", function(d) {
          //sets stroke depending on mean of cluster - will need to reset for theme
          var aves =[];
-         if (d[col] == "success") {
-           aves = [50, 74, 57, 70, 50];
-         } else {
-           aves =[21, 21, 18, 17, 17];
-         }
-         var j = aves[d.cluster];
+        //  if (d[col] == "success") {
+           aves = [43, 40, 39];
+        //  } else {
+        //    aves =[21, 21, 18, 17, 17];
+        //  }
+         var j = aves[d.cluster - 1];
          // var j = maxX/3;
          if (d[col] <= j) {
              return '#c994c7';
@@ -145,15 +145,15 @@
          }
         // "#cc0000");
        })
-       .style("stroke-width", 2)
-       .style("opacity", 0.8)
+       .style("stroke-width", 3)
+       .style("opacity", 0.2)
        .on("mouseover", function(d) {
          var right = d3.event.pageX > window.innerWidth / 2;
    
          d3.select(this)
            .transition().duration(100)
            .attr("y1", 0)
-           .style("stroke-width", 3)
+           .style("stroke-width", 4)
            .style("opacity", 1);
    
          div.transition(300)
@@ -180,7 +180,7 @@
            var detailsBox = d3.select("#details")
                console.log(d);
                // .style("top", detailsPadding + "px")
-               detailsBox.html('<div style="top:' + detailsPadding + '; position:absolute; margin-right: 10%; max-width:250px; padding: 1rem;"> <h4><a target=_blank" href="' + d.url + '">' + d.title + '</a></h4><p class="small">Engagement Rate: ' + d.engagement + '%</p><p class="small">Success Rate: ' + d.success + '%</p><p class="small">Length of Campaign: ' + d.length + ' months</p><p class="story-scroll">' + d.story + '</p><p class="small"><em> data last updated 4/28/2019, <a href="'+ d.url + '"> see campaign update</a></em></p></div> ');
+               detailsBox.html('<div style="top:' + detailsPadding + '; position:absolute; margin-right: 10%; max-width:250px; padding: 1rem;"> <h4><a target=_blank" href="' + d.url + '">' + d.title + '</a></h4><p class="small">Engagement Rate: ' + d.engagement + '%</p><p class="small">Success Rate: ' + d.success + '%</p><p class="small">Amount Raised: $' + d.raised + '</p><p class="small">Campaign Goal: $' + d.goal + '</p><p class="story-scroll">' + d.story + '</p><p class="small"><em> data last updated 4/28/2019, <a href="'+ d.url + '"> see campaign update</a></em></p></div> ');
            console.log(d.cluster);
  
        })
@@ -189,8 +189,8 @@
          d3.select(this)
            .transition().duration(100)
            .attr("y1", 50)
-           .style("stroke-width", 2)
-           .style("opacity", 0.8);
+           .style("stroke-width", 3)
+           .style("opacity", 0.2);
    
          div.transition(300)
            .style("opacity", 0)  

@@ -73,7 +73,7 @@ function update(nodeRadius) {
         
 
     var simulation = d3.forceSimulation(nodes)
-        .force("charge", d3.forceCollide().radius(5))
+        .force("charge", d3.forceCollide().radius(3.2))
         // .force("r", d3.forceRadial(function(d) { return d.type === "a" ? 100 : 200; }))
         .force("r", d3.forceRadial(function(d) { return nodeRadius[d.type] }))
         .on("tick", ticked);
@@ -105,10 +105,7 @@ function update(nodeRadius) {
           .duration(150)
           .attr("fill", function(d) {  return colorArr[d.type]; })
           .attr("r", 3.5)
-          .attr("opacity", 1);
-        // d3.select("#terms-list")
-        //     .transition()
-        //     .duration(150)
+          .attr("opacity", 1);            
          
     }
     
@@ -119,7 +116,50 @@ function update(nodeRadius) {
         .attr("opacity", 1)
         .attr("r", 2.5)
     }
-    
+
+     var words = d3.selectAll(".terms")
+        .on("mouseover", getClass)
+        .on("mouseout", leaveClass);
+
+    function getClass() {
+        console.log("fired");
+        var thisClass = d3.select(this).attr("class");
+        var cClass= thisClass.split(' ')[0];
+        var second = thisClass.split(' ')[1];
+        var clustindex = cClass.slice(-1);
+        var clust2index = second.slice(-1);
+        console.log(cClass);
+        d3.selectAll("circle.circles")
+          .transition()
+          .duration(150)
+          .attr("fill", "#cdcdcd")
+          .attr("opacity", 0.5);
+        d3.selectAll("circle." + cClass + ".circles")
+        .transition()
+          .duration(150)
+          .attr("fill", function(d) { return colorArr[+clustindex]; })
+          .attr("r", 3.5)
+          .attr("opacity", 1); 
+        if(second != "terms") {
+        d3.selectAll("circle." + second + ".circles")
+        .transition()
+            .duration(150)
+            .attr("fill", function(d) { return colorArr[+clust2index]; })
+            .attr("r", 3.5)
+            .attr("opacity", 1); 
+            }
+    }
+    function leaveClass() {
+        console.log("fired");
+        var thisClass = d3.select(this).attr("class");
+        var cClass= thisClass.split(' ')[0];
+        var clustindex = cClass.slice(-1);
+        d3.selectAll(".circles")
+        .selectAll("circle")
+        .attr("fill", function(d) { return colorArr[+clustindex]; })
+        .attr("opacity", 1)
+        .attr("r", 2.5)
+    }
 }
 
 // function drop() {
