@@ -222,7 +222,8 @@
                 .style("font-size", 12)
                 .style("color", function(d) {
                     // var colorsArr = ['#c994c7','#fdbb84','#fc8d59','#ef6548','#f7f4f9','#df65b0','#e7298a','#ce1256','#980043','#67001f'];
-                    var colorsArr = ["pink", "red", "hotpink", "purple", "orange", "violet", "orange", "violet"];                
+                    var colorsArr = ["pink", "hotpink", "orange", "violet",'#ce1256','#980043','#67001f','#ef6548', '#df65b0'];
+            
                     // console.log(d.cluster);
                     return colorsArr[d.cluster];
                 })
@@ -269,7 +270,8 @@
                     .attr("r", "6")
                     .style("fill", function(d) {
                         // var colorsArr = ['#c994c7','#fdbb84','#fc8d59','#ef6548','#f7f4f9','#df65b0','#e7298a','#ce1256','#980043','#67001f'];
-                        var colorsArr = ["pink", "red", "hotpink", "purple", "orange", "violet", '#980043','#67001f', '#e7298a','#ce1256']              
+                        var colorsArr = ["pink", "hotpink", "orange", "violet",'#ce1256','#980043','#67001f','#ef6548', '#df65b0'];
+           
                         // console.log(d.cluster);
                         return colorsArr[d.cluster];
                     })

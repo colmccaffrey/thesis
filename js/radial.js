@@ -51,7 +51,7 @@ var nodeRadiusCluster = [60, 230, 200, 175, 150, 115, 90, 75, 35, 5];
 // var colorArr= ["pink", "red", "hotpink", "purple", "orange", "violet", "orange", "violet"];
 // var colorArr = ["pink", "purple", "hotpink", '#ce1256', "orange", "violet", '#980043','#67001f', '#e7298a', "red", "purple" ];
 // var colorArr= ['#c994c7','#fdbb84','#fc8d59','#ef6548','#f7f4f9','#df65b0','#e7298a','#ce1256','#980043','#67001f'];
-var colorArr = ["pink", "hotpink", "orange", "violet",'#ce1256','#980043','#67001f','#ef6548', '#df65b0']
+var colorArr = ["pink", "hotpink", "orange", "violet",'#ce1256','#980043','#67001f','#ef6548', '#df65b0'];
 
 if (t === "all") {
     return update(nodeRadiusAll);
