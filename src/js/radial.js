@@ -10,8 +10,8 @@ function radialLoad(t) {
 
 
 // set the dimensions and margins of the graph
-var margin = {top: 300, right: 50, bottom: 40, left: 300},
-    width = 800 - margin.left - margin.right,
+var margin = {top: 300, right: 50, bottom: 40, left: 325},
+    width = 625 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
@@ -30,19 +30,28 @@ var svgRadius = d3.select("#radiusGraph")
 
 
 var nodes = [].concat(
-  d3.range(180).map(function() { return {type: 0}; }),
-  d3.range(160).map(function() { return {type: 1}; }),
-  d3.range(60).map(function() { return {type: 2}; }),
-  d3.range(100).map(function() { return {type: 3}; }),
-  d3.range(80).map(function() { return {type: 4}; }),
-  d3.range(250).map(function() { return {type: 5}; }),
-  d3.range(7).map(function() { return {type: 6}; }),
-  d3.range(30).map(function() { return {type: 7}; })
+  d3.range(30).map(function() { return {type: 0}; }),
+  d3.range(250).map(function() { return {type: 1}; }),
+  d3.range(160).map(function() { return {type: 2}; }),
+  d3.range(200).map(function() { return {type: 3}; }),
+  d3.range(140).map(function() { return {type: 4}; }),
+  d3.range(110).map(function() { return {type: 5}; }),
+  d3.range(40).map(function() { return {type: 6}; }),
+  d3.range(40).map(function() { return {type: 7}; }),
+  d3.range(30).map(function() { return {type: 8}; }),
+  d3.range(20).map(function() { return {type: 9}; })
 );
 
-var nodeRadiusAll = [220, 210, 180, 200, 190, 230, 165, 175];
-var nodeRadiusCluster = [200, 170, 70, 130, 100, 230, 10, 40];
-var colorArr= ["pink", "red", "hotpink", "purple", "orange", "violet", "orange", "violet"];
+// var nodeRadiusAll = [220, 210, 180, 200, 190, 230, 165, 175];
+var nodeRadiusAll = [115, 200, 160, 175, 145, 130, 120, 115, 110, 100];
+
+// var nodeRadiusCluster = [200, 170, 70, 130, 100, 230, 10, 40];
+var nodeRadiusCluster = [60, 230, 200, 175, 150, 115, 90, 75, 35, 5];
+
+// var colorArr= ["pink", "red", "hotpink", "purple", "orange", "violet", "orange", "violet"];
+// var colorArr = ["pink", "purple", "hotpink", '#ce1256', "orange", "violet", '#980043','#67001f', '#e7298a', "red", "purple" ];
+// var colorArr= ['#c994c7','#fdbb84','#fc8d59','#ef6548','#f7f4f9','#df65b0','#e7298a','#ce1256','#980043','#67001f'];
+var colorArr = ["pink", "hotpink", "orange", "violet",'#ce1256','#980043','#67001f','#ef6548', '#df65b0']
 
 if (t === "all") {
     return update(nodeRadiusAll);

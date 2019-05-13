@@ -2,13 +2,16 @@
 //git subtree push --prefix src origin gh-pages
 /* global Vue */
 
+    // remove large Files from commit cache
+    // git filter-branch --tree-filter 'rm -rf documentation/test.mov' HEAD
+
+
 
 var app = new Vue({
     
     // This is the id of our referenced div-element
     // only this element and everything in it
     // will be connected to the data
-    git filter-branch --subtree-filter 'rm -rf documentation/test.mov' HEAD
 
     //el is defined by vue
     el: '#bars',
