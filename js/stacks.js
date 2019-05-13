@@ -145,15 +145,15 @@
          }
         // "#cc0000");
        })
-       .style("stroke-width", 3)
-       .style("opacity", 0.7)
+       .style("stroke-width", 2)
+       .style("opacity", 0.8)
        .on("mouseover", function(d) {
          var right = d3.event.pageX > window.innerWidth / 2;
    
          d3.select(this)
            .transition().duration(100)
            .attr("y1", 0)
-           .style("stroke-width", 4)
+           .style("stroke-width", 3)
            .style("opacity", 1);
    
          div.transition(300)
@@ -175,7 +175,7 @@
        .on("click", function(d, i){
            var topY = d3.event.pageY;
         //    var detailsPadding = topY - 100 +  "px";
-        detailsPadding = 200 + "px";
+        detailsPadding = 0 + "px";
            console.log("padding" + detailsPadding);
            var detailsBox = d3.select("#details")
                console.log(d);
@@ -189,8 +189,8 @@
          d3.select(this)
            .transition().duration(100)
            .attr("y1", 50)
-           .style("stroke-width", 3)
-           .style("opacity", 0.7);
+           .style("stroke-width", 2)
+           .style("opacity", 0.8);
    
          div.transition(300)
            .style("opacity", 0)  
