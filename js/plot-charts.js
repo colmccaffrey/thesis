@@ -85,7 +85,6 @@
 
 
         // text label for the y axis
-
           var plots = d3.select("#plots-chart").select("svg");
             
           plots
